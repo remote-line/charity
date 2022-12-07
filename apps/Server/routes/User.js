@@ -12,6 +12,7 @@ router.post('/register', async(req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hashpassword,
+            isAdmin:req.body.isAdmin
          })
  const result = await authSchema.validateAsync(req.body)
 // console.log(result)
@@ -45,11 +46,4 @@ router.post('/register', async(req, res) => {
                 res.status(500).json(err)
             }
         })
-exports.forgetpassword=(req, res)=>{
-const{email}=req.body;
-User.findOne({email}, (err, user)=>{
-    
-})
-}
-
 module.exports = router

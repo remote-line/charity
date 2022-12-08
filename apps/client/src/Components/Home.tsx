@@ -22,7 +22,7 @@ const home = () => {
             </div>
             <div className="w-screen bg-slate-700 ">
                 <h2 className="bg-slate-900 text-white font-serif flex px-2 h-24 text-2xl items-center">
-                    Manage Your Beneficiary
+                    Manage Your Beneficiary people
                 </h2>
                 <div className="grid grid-cols-4 grid-flow-row gap-11 px-8 py-8">
                 </div>

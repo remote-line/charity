@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../index.css';
 
@@ -38,7 +37,7 @@ function Login() {
                 </form>
             </div>
             <div className='login-right bg-slate-400 flex justify-center rounded-r-xl'>
-                <img className='rounded-r-lg' src={require('../Assets/main.jpg')} alt="main image" />
+                <img className='rounded-r-lg' src={require('../Assets/main.jpg')} alt="main" />
             </div>
         </div>
     );

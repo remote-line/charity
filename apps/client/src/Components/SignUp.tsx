@@ -1,4 +1,3 @@
-import React from 'react';
 import '../index.css';
 
 function SignUp() {
@@ -37,7 +36,7 @@ function SignUp() {
                 </form>
             </div>
             <div className='login-right bg-slate-400 flex justify-center rounded-r-xl'>
-                <img className='rounded-r-lg' src={require('../Assets/donate.jpg')} alt="main image" />
+                <img className='rounded-r-lg' src={require('../Assets/donate.jpg')} alt="donate" />
             </div>
         </div>
     );

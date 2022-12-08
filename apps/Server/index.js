@@ -13,7 +13,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => { console.log('Connected to Mongo database')});
 app.use(express.json())
-app.use(express.json())
 const userRoute = require('./routes/User')
 app.use('/api/user', userRoute)
 app.listen(port, () => {

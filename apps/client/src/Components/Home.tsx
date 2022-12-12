@@ -17,7 +17,6 @@ const home = () => {
                     <div className="py-20">
                     </div>
                     <hr />
-                    <span>Privacy & Settings</span>
                 </div>
             </div>
             <div className="w-screen bg-slate-700 ">

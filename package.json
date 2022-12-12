@@ -23,8 +23,5 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "yarn@1.22.19",
-  "dependencies": {
-    "react-router-dom": "^6.4.5"
-  }
+  "packageManager": "yarn@1.22.19"
 }

@@ -1,39 +1,32 @@
-import React from 'react';
-<<<<<<< HEAD
-//import logo from './logo.svg';
-import './App.css';
-//import { homedir } from 'os';
-=======
-import logo from './logo.svg';
-import './App.css';
+import Home from './Components/Home';
+import SignUp from './Components/SignUp';
+import Login from './Components/Login';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
->>>>>>> main
+import './index.css';
+import React from 'react';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-<<<<<<< HEAD
- <h1> Charity</h1>
-        <label> UserName   <input className='input' placeholder='Enter UserName'></input></label>
-      
-        <label>Password <input   className='input' placeholder='Enter Password'></input>  </label> 
-       <a href='/home.tsx'>sd</a>
-        <button type="submit"  className="btn"> Login</button>
-=======
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
->>>>>>> main
-      </header>
+    <div className='App'>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/Home' element={<Home />} />
+        </Routes>
+      </Router>
+
+      <div className="App">
+        <header className="App-header">
+          <h1> Charity</h1>
+          <label> UserName   <input className='input' placeholder='Enter UserName'></input></label>
+
+          <label>Password <input className='input' placeholder='Enter Password'></input>  </label>
+          <a href='/home.tsx'>sd</a>
+          <button type="submit" className="btn"> Login</button>
+        </header>
+      </div>
     </div>
   );
 }

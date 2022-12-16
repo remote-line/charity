@@ -37,9 +37,10 @@ function Login() {
                 </form>
             </div>
             <div className='login-right bg-slate-400 flex justify-center rounded-r-xl'>
-                <img className='rounded-r-lg' src={require('../Assets/main.jpg')} alt="main" />
+                <img className='rounded-r-lg' src={require('../assets/main.jpg')} alt="main" />
             </div>
         </div>
+        
     );
 }
 

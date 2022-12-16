@@ -36,7 +36,7 @@ function SignUp() {
                 </form>
             </div>
             <div className='login-right bg-slate-400 flex justify-center rounded-r-xl'>
-                <img className='rounded-r-lg' src={require('../Assets/donate.jpg')} alt="donate" />
+                <img className='rounded-r-lg' src={require('../assets/donate.jpg')} alt="donate" />
             </div>
         </div>
     );

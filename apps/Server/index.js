@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-let port = 3000;
+let port = 4000;
 var mongoDB = 'mongodb://127.0.0.1/charity';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-
+var cors = require('cors');
+app.use(cors());
 //Get the default connection
 var db = mongoose.connection;
 

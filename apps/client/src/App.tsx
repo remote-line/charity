@@ -1,5 +1,5 @@
 import Home from './Components/Home';
-import SignUp from './Components/SignUp';
+import SignUp from './pages/signupform';
 import Login from './Components/Login';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -19,12 +19,7 @@ function App() {
 
       <div className="App">
         <header className="App-header">
-          <h1> Charity</h1>
-          <label> UserName   <input className='input' placeholder='Enter UserName'></input></label>
-
-          <label>Password <input className='input' placeholder='Enter Password'></input>  </label>
-          <a href='/home.tsx'>sd</a>
-          <button type="submit" className="btn"> Login</button>
+       
         </header>
       </div>
     </div>

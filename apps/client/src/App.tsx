@@ -1,4 +1,4 @@
-import Home from './Components/Home';
+import Home1 from './Components/Home1';
 import SignUp from './pages/signupform';
 import Login from './Components/Login';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/Home' element={<Home />} />
+          <Route path='/Home' element={<Home1 />} />
         </Routes>
       </Router>
 

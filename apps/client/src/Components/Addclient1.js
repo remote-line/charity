@@ -1,12 +1,14 @@
+import Select from 'react-select';
+import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, } from "react";
- //import Menu from '@material-ui/core/Menu'; 
+
 import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
  
 function Addclient() {
-    const [items, setItems] = useState<any>([]);
+    const [items, setItems] = useState([]);
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
         const handleHome = () => {
@@ -67,16 +69,18 @@ function Addclient() {
                                                                   />
                 <label className="text-xl font-bold font-family: ui-serif px-6" >Status</label>
                 
-
-        <Select        
+                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select  
+        className='h-10 outline-none text-lg border-2 border-gray-900 rounded-lg'      
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     label="Age"
    >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
+    <MenuItem  >Pending</MenuItem>
+    <MenuItem  >Done</MenuItem>
+   
   </Select>
+   
                 <button className="text-xl font-bold font-family: ui-serif"> Add Client</button>
                       </div> 
                 </div>

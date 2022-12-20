@@ -4,10 +4,12 @@ router.post('/register', async (req, res) => {
     try {
         const newUser = new User({
             name: req.body.name,
-            amount: req.body.amount
-            
+            amount: req.body.amount,
+            status:req.body.status
         })
+         
         const user = await newUser.save()
+
         res.status(200).json(user)
     } catch (error) {
         res.status(500).json(error)

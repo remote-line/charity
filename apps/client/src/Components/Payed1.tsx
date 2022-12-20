@@ -4,7 +4,7 @@ import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
  
-function Home() {
+function Payed() {
     const [items, setItems] = useState<any>([]);
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
@@ -15,20 +15,25 @@ function Home() {
     const handleAddclient = () => {
   navigate(`/Addclient`);
 }; 
-const handlePayed=()=>{
-  navigate(`/Payed`);
-}
+
 const handlePending = () => {
     navigate(`/Pending`);
-  }; 
+  };
+  const handlePayed=()=>{
+    navigate(`/Payed`);
+  } 
    const getdata = () => {
         axios
-          .get(`${baseUrl}/api/client`, 
-        )
+          .post(`${baseUrl}/api/client/search`, 
+           {
+            status:"Done"
+           }
+          )
           .then((response) => {
             const items = response.data; 
            console.log(items);
            setItems(items);
+
           })
    };
    useEffect(() => {
@@ -41,10 +46,10 @@ const handlePending = () => {
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
                 <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
                 <div className='pt-10 space-y-4'>
-                    <span className="flex flex-row " ><button   className=" flex flex-row bg-green-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
+                    <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleAddclient}>Add New</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
+                    <span className="flex flex-row ">   <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed}  >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>
@@ -106,4 +111,4 @@ const handlePending = () => {
     )
 };
 
-export default Home;
+export default Payed;

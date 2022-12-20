@@ -1,6 +1,6 @@
  
 import {  useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
  
  
 import '../index.css';
@@ -9,8 +9,8 @@ const baseUrl =  'http://localhost:4000';
     
 function Addclient() {
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-    const [items, setItems] = useState([]);
+    const [ setIsSubmit] = useState(false);
+   // const [items, setItems] = useState([]);
     const [client, setUserDetails] = useState({
         name: "",
         amount: "",
@@ -52,6 +52,9 @@ function Addclient() {
               const handlePending = () => {
                 navigate(`/Pending`);
               }; 
+              const handlePayed=()=>{
+                navigate(`/Payed`);
+              }
    const getdata = () => {
         axios
           .post(`${baseUrl}/api/client/register`, client 
@@ -74,13 +77,13 @@ function Addclient() {
   
     return (
         <div className="flex flex-row h-screen bg-slate-500">
-            <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
-                <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
-                <div className='pt-10 space-y-4'>
+        <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
+            <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
+            <div className='pt-10 space-y-4'>
                     <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleaddclient}>Add New</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Payed</button></span>
+                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>
@@ -95,9 +98,10 @@ function Addclient() {
                     Manage Your Beneficiary List
                 </h2>
                 
-                <div   className="gap-11 px-2 py-10 text-white">
-                 <h1  className="font-bold  font-serif text-center  text-2xl "> Client Detail</h1>
-                 <div className=" py-10 text-white"> 
+                <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
+   
+                 <h1  className="font-bold  font-serif text-center  text-2xl "> Client Add</h1>
+                 <div className=" grid-flow-row gap-11 px-8 py-10 text-white"> 
                 <label className="text-xl font-bold ml-20 font-family: ui-serif pl-20">Name</label> 
                 <input 
                     className='h-8 w-30  outline-none text-lg text-black border-2 ml-40 border-gray-900 rounded-lg'
@@ -137,8 +141,11 @@ function Addclient() {
                 
                 <p className='text-xl ml-48 pl-48 py-2 font-bold' style={{ color: 'black', fontSize: '16px'}  }>{formErrors.status}</p>
  
-                <button className="text-xl ml-96 font-bold font-family: mt-8 ui-serif bg-green-600 border-2 rounded-lg px-2"
-                   onClick={submitHandler}> Add Client</button>
+                <button 
+                className=" flex text-xl ml-96 font-bold font-family: mt-8 ui-serif bg-green-600 border-2 rounded-lg px-2"
+                   onClick={submitHandler}>
+                     Add Client
+                     </button>
                       </div> 
                 </div>
             </div>

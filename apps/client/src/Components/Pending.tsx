@@ -19,14 +19,20 @@ function Pending() {
 const handlePending = () => {
     navigate(`/Pending`);
   }; 
+  const handlePayed=()=>{
+    navigate(`/Payed`);
+  }
    const getdata = () => {
         axios
-          .get(`${baseUrl}/api/client`, 
-        )
+          .post(`${baseUrl}/api/client/search`, 
+           {
+            status:"pending"
+           }
+          )
           .then((response) => {
             const items = response.data; 
            console.log(items);
-           //setItems(items);
+           setItems(items);
 
           })
    };
@@ -43,7 +49,7 @@ const handlePending = () => {
                     <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleAddclient}>Add New</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Payed</button></span>
+                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed}>Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>

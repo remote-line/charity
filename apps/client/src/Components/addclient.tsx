@@ -44,52 +44,22 @@ function Addclient() {
                     <hr />
                 </div>
             </div>
-            <div className="  bg-slate-700 ">
+            <div className=" h-screen bg-slate-700 ">
                 <h2 className="bg-slate-800 text-white font-serif flex px-2 h-24 text-2xl items-center">
                     Manage Your Beneficiary List
                 </h2>
-                <div   className=" g-slate-800  gap-11 px-2 py-10 text-white">
-                 <h1  className="font-bold  font-serif text-center  text-2xl "> Client Detail</h1>
-                 <div className=" grid grid-cols-3 grid-flow-row gap-11 px-8 py-10 text-white"> 
-
-                <table className="  table-fixed text-center  border-white" style={{
-                    width: 600}} >
-                <thead className="bg-b9green2 border border-white h-14">
-                <tr className="text-md font-bold">
-              <th
-               
-                className="px-1 border border-white bg-sky-600" 
-                style={{
-                    width: 300}} >
-                Name
-              </th> 
-              <th
                 
-                className="px-1 border border-white bg-sky-600" style={{
-                    width: 300}}
-              >
-                Amount
-              </th> 
-             <th className="px-1 border border-white bg-sky-600" style={{
-                    width: 300}}
-              >
-                Status
-              </th>
-              </tr>                    
-              </thead>
-              {items?.map((items:any) => (
-               <tbody key={items._id}>
-                <tr className="px-1 border border-white">
-                    <td className="px-1 border border-white">{items?.name}</td>
-                    <td  className="px-1 border border-white">{items?.amount}</td>
-                    <td  className="px-1 border border-white">{items?.Status}</td>
-                </tr>
-               </tbody>
-               ))}
-
-
-              </table></div>
-           
+                <div   className="gap-11 px-2 py-10 text-white">
+                 <h1  className="font-bold  font-serif text-center  text-2xl "> Client Detail</h1>
+                 <div className=" grid grid-cols-8 grid-flow-row gap-11 py-10 text-white"> 
+                <label className="text-xl font-bold font-family: ui-serif px-16">Name</label> 
+                <input></input>
+                <label className="text-xl font-bold font-family: ui-serif">Amount</label>  
+                <input>
+                </input>
+                <label className="text-xl font-bold font-family: ui-serif">Status</label>
+                <button className="text-xl font-bold font-family: ui-serif"> Add Client</button>
+                      </div> 
                 </div>
             </div>
         </div>

@@ -12,6 +12,10 @@ function Home() {
       navigate(`/Home`);
          getdata();
     }; 
+    const handleAddclient = () => {
+  navigate(`/Addclient`);
+     getdata();
+}; 
    const getdata = () => {
         axios
           .get(`${baseUrl}/api/client`, 
@@ -32,7 +36,7 @@ function Home() {
                 <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
                 <div className='pt-10 space-y-4'>
                     <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200" onClick={handleHome}>Home</button></span>
-                    <span className="flex flex-row "> <button>Add New</button></span>
+                    <span className="flex flex-row "> <button  className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200" onClick={handleAddclient}>Add New</button></span>
                     <span className="flex flex-row " > Pending</span>
                     <span className="flex flex-row ">  Payed</span>
                     <span className="flex flex-row "> Deleted Recently</span>

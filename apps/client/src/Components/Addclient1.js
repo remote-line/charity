@@ -70,7 +70,7 @@ function Addclient() {
     setIsSubmit(true);
     
   };
-   
+   fsddfsd
     return (
         <div className="flex flex-row h-screen bg-slate-500">
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>

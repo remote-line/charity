@@ -14,7 +14,6 @@ function Home() {
     }; 
     const handleAddclient = () => {
   navigate(`/Addclient`);
-     getdata();
 }; 
    const getdata = () => {
         axios
@@ -35,14 +34,14 @@ function Home() {
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
                 <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
                 <div className='pt-10 space-y-4'>
-                    <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200" onClick={handleHome}>Home</button></span>
-                    <span className="flex flex-row "> <button  className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200" onClick={handleAddclient}>Add New</button></span>
-                    <span className="flex flex-row " > Pending</span>
-                    <span className="flex flex-row ">  Payed</span>
-                    <span className="flex flex-row "> Deleted Recently</span>
-                    <span className="flex flex-row "> Reminders</span>
-                    <span className="flex flex-row "> Notes</span>
-                    <span className="flex flex-row "> Reffered</span>
+                    <span className="flex flex-row " ><button   className=" flex flex-row bg-green-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleAddclient}>Add New</button></span>
+                    <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Pending</button></span>
+                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Payed</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>
+                    <span className="flex flex-row "><button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Reffered</button> </span>
                     <div className="py-20">
                     </div>
                     <hr />
@@ -86,7 +85,7 @@ function Home() {
                 <tr className="px-1 border border-white">
                     <td className="px-1 border border-white">{items?.name}</td>
                     <td  className="px-1 border border-white">{items?.amount}</td>
-                    <td  className="px-1 border border-white">{items?.Status}</td>
+                    <td  className="px-1 border border-white">{items?.status}</td>
                 </tr>
                </tbody>
                ))}

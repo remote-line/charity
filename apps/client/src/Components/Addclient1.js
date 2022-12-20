@@ -69,7 +69,7 @@ function Addclient() {
                                                                   />
                 <label className="text-xl font-bold font-family: ui-serif px-6" >Status</label>
                 
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <label id="demo-simple-select-label">Age</label>
         <Select  
         className='h-10 outline-none text-lg border-2 border-gray-900 rounded-lg'      
     labelId="demo-simple-select-label"

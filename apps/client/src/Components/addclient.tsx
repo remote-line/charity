@@ -4,7 +4,7 @@ import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
  
-function Home() {
+function Addclient() {
     const [items, setItems] = useState<any>([]);
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
@@ -96,4 +96,4 @@ function Home() {
     )
 };
 
-export default Home;
+export default Addclient;

@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState} from "react";
 import '../index.css';
 import axios from "axios";
- 
 const baseUrl =  'http://localhost:4000';
 
 function Login() {

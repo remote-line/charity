@@ -36,6 +36,8 @@ const handlePending = () => {
   }, []);
    
   const handleRow=( id: any)=>{
+    console.log(id);
+    localStorage.setItem("item Datail", id);
     navigate(`/Addclient/${id}`);
   }
    

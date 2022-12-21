@@ -34,7 +34,7 @@ function Login() {
           .post(`${baseUrl}/api/user/login`, user
         )
           .then((response) => {
-            navigate('./Home'); 
+            navigate('/home'); 
           })
           .catch((error) => {
         //    console.log(error.response.data.error)

@@ -12,9 +12,24 @@ router.post('/register', async (req, res) => {
 
         res.status(200).json(user)
     } catch (error) {
-        res.status(500).json(error)
-    }
+        res.status(500).json({error:'Client Name already exist '}
+   )   }
 })
+router.post("/search", async (req, res) => {
+    try {
+        const search = {};
+        // @ts-ignore
+       search["status"] = req.body.status
+      const item = await User.find(search);
+   //   const result = item?.filter((rs) => rs?.codes.length > 0);
+      res.status(200).json(item);
+    } catch (error) {
+      Logger.error(error);
+      res.status(400).json({ message: error });
+    }
+  });
+
+
 
 router.get('/', async(req, res) => {
     //const query = req.query.new
@@ -26,7 +41,7 @@ router.get('/', async(req, res) => {
         res.status(500).json(err)
     }
 })
-router.get('/find/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     try {
         const user = await User.findById(req.params.id)
         res.status(200).json(user)
@@ -34,14 +49,15 @@ router.get('/find/:id', async(req, res) => {
         res.status(500).json(err)
     }
 })
+
 router.put('/:id', async(req, res) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, {
-            $set:req.body
-        }, {new: true})
+    try {         
+        const updatedUser = await User.findOneAndUpdate(req.params.id, {
+            $set:req.body            
+         }, {new: true})
         res.status(200).json(updatedUser)
     } catch (err) {
-      res.send(500).json(err)  
+        res.status(500).json({error: 'this is error'}); 
     }
 })
 router.delete('/:id', async(req, res) => {

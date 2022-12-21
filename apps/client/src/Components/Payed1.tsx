@@ -4,7 +4,7 @@ import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
  
-function Home() {
+function Payed() {
     const [items, setItems] = useState<any>([]);
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
@@ -15,45 +15,45 @@ function Home() {
     const handleAddclient = () => {
   navigate(`/add-client`);
 }; 
-const handlePayed=()=>{
-  navigate(`/payed`);
-}
+
 const handlePending = () => {
     navigate(`/pending`);
-  }; 
+  };
+  const handlePayed=()=>{
+    navigate(`/payed`);
+  } 
+  const handleUpdateclient=()=>{
+    navigate(`/update-client`);
+  }
    const getdata = () => {
         axios
-          .get(`${baseUrl}/api/client`, 
-        )
+          .post(`${baseUrl}/api/client/search`, 
+           {
+            status:"Done"
+           }
+          )
           .then((response) => {
             const items = response.data; 
            console.log(items);
            setItems(items);
+
           })
    };
    useEffect(() => {
     getdata();
   }, []);
-   
-  const handleRow=( id: any)=>{
-   // console.log(id);
-  // localStorage.setItem("sheetId", id);
-    navigate(`/update-client/${id}`);
-  }
-  const handleUpdateclient=()=>{
-    navigate(`/update-client`);
-  }
-   
+    
+
     return (
         <div className="flex flex-row h-screen bg-slate-500">
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
                 <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
                 <div className='pt-10 space-y-4'>
-                    <span className="flex flex-row " ><button   className=" flex flex-row bg-green-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
+                    <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleAddclient}>Add New</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
+                    <span className="flex flex-row ">   <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed}  >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>
@@ -98,10 +98,8 @@ const handlePending = () => {
               </thead>
               {items?.map((items:any) => (
                <tbody key={items._id}>
-                <tr className="px-1 border border-white"   onClick={() =>
-                      handleRow(items._id)
-                    }>
-                    <td className="px-1 border border-white" >{items?.name}</td>
+                <tr className="px-1 border border-white">
+                    <td className="px-1 border border-white">{items?.name}</td>
                     <td  className="px-1 border border-white">{items?.amount}</td>
                     <td  className="px-1 border border-white">{items?.status}</td>
                 </tr>
@@ -117,4 +115,4 @@ const handlePending = () => {
     )
 };
 
-export default Home;
+export default Payed;

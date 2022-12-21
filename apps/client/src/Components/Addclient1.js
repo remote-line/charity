@@ -71,6 +71,8 @@ function Addclient() {
     )
       .then((response) => {
         console.log("get")
+        const items = response.data; 
+
      
       })
 };
@@ -86,7 +88,7 @@ function Addclient() {
   };
   const putdata = () => {
     axios
-      .put(`${baseUrl}/api/client/name`, client
+      .put(`${baseUrl}/api/client/${id}`, 
     )
       .then((response) => {
         console.log("data upadte")
@@ -97,6 +99,7 @@ const updateHandler = (e) => {
   e.preventDefault();
   //setFormErrors(validateForm(client));
   //setIsSubmit(true);
+  getitem();
   putdata();
 };
 

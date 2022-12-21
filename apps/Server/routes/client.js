@@ -41,7 +41,7 @@ router.get('/', async(req, res) => {
         res.status(500).json(err)
     }
 })
-router.get('/find/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     try {
         const user = await User.findById(req.params.id)
         res.status(200).json(user)
@@ -49,16 +49,12 @@ router.get('/find/:id', async(req, res) => {
         res.status(500).json(err)
     }
 })
+
 router.put('/:id', async(req, res) => {
-    try { 
-       
-      
-        
+    try {         
         const updatedUser = await User.findOneAndUpdate(req.params.id, {
-            $set:req.body
-            
+            $set:req.body            
          }, {new: true})
-      
         res.status(200).json(updatedUser)
     } catch (err) {
       res.send(500).json(err)  

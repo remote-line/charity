@@ -12,8 +12,8 @@ router.post('/register', async (req, res) => {
 
         res.status(200).json(user)
     } catch (error) {
-        res.status(500).json(error)
-    }
+        res.status(500).json({error:'Client Name already exist '}
+   )   }
 })
 router.post("/search", async (req, res) => {
     try {
@@ -57,8 +57,7 @@ router.put('/:id', async(req, res) => {
          }, {new: true})
         res.status(200).json(updatedUser)
     } catch (err) {
-      res.send(400).json(err)  
- 
+        res.status(500).json({error: 'this is error'}); 
     }
 })
 router.delete('/:id', async(req, res) => {

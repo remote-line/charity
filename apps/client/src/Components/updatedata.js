@@ -78,9 +78,9 @@ function Addclient() {
     axios
       .put(`${baseUrl}/api/client/${id}`, client
     )
-      .then((res) => {
+      .then((response) => {
  
-        const datee=res.data;
+        const datee=response.data;
 
       })
 };

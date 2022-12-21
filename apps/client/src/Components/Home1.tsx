@@ -9,17 +9,17 @@ function Home() {
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
         const handleHome = () => {
-      navigate(`/Home`);
+      navigate(`/home`);
          getdata();
     }; 
     const handleAddclient = () => {
-  navigate(`/Addclient`);
+  navigate(`/add-client`);
 }; 
 const handlePayed=()=>{
-  navigate(`/Payed`);
+  navigate(`/payed`);
 }
 const handlePending = () => {
-    navigate(`/Pending`);
+    navigate(`/pending`);
   }; 
    const getdata = () => {
         axios
@@ -38,7 +38,10 @@ const handlePending = () => {
   const handleRow=( id: any)=>{
    // console.log(id);
   // localStorage.setItem("sheetId", id);
-    navigate(`/Addclient/${id}`);
+    navigate(`/update-client/${id}`);
+  }
+  const handleUpdateclient=()=>{
+    navigate(`/update-client`);
   }
    
     return (
@@ -48,6 +51,7 @@ const handlePending = () => {
                 <div className='pt-10 space-y-4'>
                     <span className="flex flex-row " ><button   className=" flex flex-row bg-green-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleAddclient}>Add New</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
                     <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>

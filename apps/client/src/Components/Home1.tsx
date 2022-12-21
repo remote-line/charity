@@ -37,7 +37,8 @@ const handlePending = () => {
    
   const handleRow=( id: any)=>{
    // console.log(id);
-    navigate(`/Addclient/${id}`);
+   localStorage.setItem("sheetId", id);
+    navigate(`/Addclient`);
   }
    
     return (

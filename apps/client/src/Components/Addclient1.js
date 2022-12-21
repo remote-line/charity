@@ -7,10 +7,12 @@ import axios from "axios";
 const baseUrl =  'http://localhost:4000';
     
 function Addclient() {
-    const [formErrors, setFormErrors] = useState({});
+  const sheetId = localStorage.getItem("sheetId");
+  const [formErrors, setFormErrors] = useState({});
     const [ setIsSubmit] = useState(false);
     const { id } = useParams();
     // const [items, setItems] = useState([]);
+   
     const [client, setUserDetails] = useState({
         name: "",
         amount: "",
@@ -26,6 +28,8 @@ function Addclient() {
         });
       };
 
+  
+     // console.log(sheetId)
       const validateForm = (values) => {
         const error = {};
         
@@ -67,40 +71,36 @@ function Addclient() {
   
    const getitem = () => {
     axios
-      .get(`${baseUrl}/api/client/${id}`, client 
+      .get(`${baseUrl}/api/client/${sheetId}`, 
     )
       .then((response) => {
-        console.log("get")
-        const items = response.data; 
-
-     
+        const itemsa = response.data; 
+        //console.log(itemsa.name)
+        setUserDetails(itemsa)
       })
 };
-   function refreshPage() {
-    window.location.reload(false);
-  }
-   
-  const submitHandler = (e) => {
-    e.preventDefault();
-    setFormErrors(validateForm(client));
-    setIsSubmit(true);
-    getdata();
-  };
-  const putdata = () => {
+  const updatedata = () => {
     axios
-      .put(`${baseUrl}/api/client/${id}`, 
+      .put(`${baseUrl}/api/client/${id}`, client
     )
       .then((response) => {
         console.log("data upadte")
-        refreshPage()
+         
       })
+};
+
+const submitHandler = (e) => {
+  e.preventDefault();
+  setFormErrors(validateForm(client));
+  setIsSubmit(true);
+  getdata();
 };
 const updateHandler = (e) => {
   e.preventDefault();
   //setFormErrors(validateForm(client));
   //setIsSubmit(true);
-  getitem();
-  putdata();
+  //getitem();
+ updatedata();
 };
 
 function refreshPage() {
@@ -169,18 +169,16 @@ window.location.reload(false);
                                   onChange={changeHandler}
                                   value={client.status}
                     />
-          
-                
                 <p className='text-xl ml-48 pl-48 py-2 font-bold' style={{ color: 'black', fontSize: '16px'}  }>{formErrors.status}</p>
                   <div className='flex text-xl  font-bold font-family:ui-serif  '>
                     <button 
-                className="flex text-xl ml-96 font-bold font-family:ui-serif mt-4 bg-green-600 border-2 rounded-lg px-2"
+                className="flex  text-xl ml-96 font-bold font-family:ui-serif mt-4 bg-green-600 border-2 rounded-lg px-2"
                    onClick={submitHandler}>
                      Add Client
                      </button>
                  <button
                   className="flex text-xl font-bold font-family:ui-serif ml-4 bg-green-600 mt-4 border-2 rounded-lg"
-                  onClick={putdata}
+                  onClick={updateHandler}
                      >
                       Update Client
                      </button>

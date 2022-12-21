@@ -50,10 +50,15 @@ router.get('/find/:id', async(req, res) => {
     }
 })
 router.put('/:id', async(req, res) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+    try { 
+       
+      
+        
+        const updatedUser = await User.findOneAndUpdate(req.params.id, {
             $set:req.body
-        }, {new: true})
+            
+         }, {new: true})
+      
         res.status(200).json(updatedUser)
     } catch (err) {
       res.send(500).json(err)  

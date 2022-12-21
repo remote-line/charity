@@ -1,8 +1,7 @@
  
 import {  useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import React, { useState } from "react";
- 
- 
 import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
@@ -10,7 +9,8 @@ const baseUrl =  'http://localhost:4000';
 function Addclient() {
     const [formErrors, setFormErrors] = useState({});
     const [ setIsSubmit] = useState(false);
-   // const [items, setItems] = useState([]);
+    const { id } = useParams();
+    // const [items, setItems] = useState([]);
     const [client, setUserDetails] = useState({
         name: "",
         amount: "",
@@ -64,6 +64,16 @@ function Addclient() {
             refreshPage()
           })
    };
+  
+   const getitem = () => {
+    axios
+      .get(`${baseUrl}/api/client/${id}`, client 
+    )
+      .then((response) => {
+        console.log("get")
+     
+      })
+};
    function refreshPage() {
     window.location.reload(false);
   }
@@ -74,7 +84,26 @@ function Addclient() {
     setIsSubmit(true);
     getdata();
   };
-  
+  const putdata = () => {
+    axios
+      .put(`${baseUrl}/api/client/name`, client
+    )
+      .then((response) => {
+        console.log("data upadte")
+        refreshPage()
+      })
+};
+const updateHandler = (e) => {
+  e.preventDefault();
+  //setFormErrors(validateForm(client));
+  //setIsSubmit(true);
+  putdata();
+};
+
+function refreshPage() {
+window.location.reload(false);
+}
+
     return (
         <div className="flex flex-row h-screen bg-slate-500">
         <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
@@ -119,7 +148,7 @@ function Addclient() {
                     Amount
                     </label>  
                 <input 
-                    className='h-8 outline-none text-lg border-2 text-black border-gray-900 rounded-lg ml-36 '
+                    className='h-8 outline-none text-lg border-2 text-black border-gray-900 rounded-lg ml-36  '
                                  type="text"
                                   id="amount"
                                   name="amount"
@@ -140,12 +169,19 @@ function Addclient() {
           
                 
                 <p className='text-xl ml-48 pl-48 py-2 font-bold' style={{ color: 'black', fontSize: '16px'}  }>{formErrors.status}</p>
- 
-                <button 
-                className=" flex text-xl ml-96 font-bold font-family: mt-8 ui-serif bg-green-600 border-2 rounded-lg px-2"
+                  <div className='flex text-xl  font-bold font-family:ui-serif  '>
+                    <button 
+                className="flex text-xl ml-96 font-bold font-family:ui-serif mt-4 bg-green-600 border-2 rounded-lg px-2"
                    onClick={submitHandler}>
                      Add Client
                      </button>
+                 <button
+                  className="flex text-xl font-bold font-family:ui-serif ml-4 bg-green-600 mt-4 border-2 rounded-lg"
+                  onClick={putdata}
+                     >
+                      Update Client
+                     </button>
+                     </div>
                       </div> 
                 </div>
             </div>

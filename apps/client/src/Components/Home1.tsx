@@ -34,8 +34,11 @@ const handlePending = () => {
    useEffect(() => {
     getdata();
   }, []);
-    
-
+   
+  const handleRow=( id: any)=>{
+    navigate(`/Addclient/${id}`);
+  }
+   
     return (
         <div className="flex flex-row h-screen bg-slate-500">
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
@@ -89,8 +92,10 @@ const handlePending = () => {
               </thead>
               {items?.map((items:any) => (
                <tbody key={items._id}>
-                <tr className="px-1 border border-white">
-                    <td className="px-1 border border-white">{items?.name}</td>
+                <tr className="px-1 border border-white"   onClick={() =>
+                      handleRow(items._id)
+                    }>
+                    <td className="px-1 border border-white" >{items?.name}</td>
                     <td  className="px-1 border border-white">{items?.amount}</td>
                     <td  className="px-1 border border-white">{items?.status}</td>
                 </tr>

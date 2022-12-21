@@ -79,28 +79,28 @@ function Addclient() {
         setUserDetails(itemsa)
       })
 };
+console.log(sheetId)
   const updatedata = () => {
     axios
-      .put(`${baseUrl}/api/client/${id}`, client
+      .put(`${baseUrl}/api/client/${sheetId}`, client
     )
-      .then((response) => {
-        console.log("data upadte")
-         
+      .then((res) => {
+ 
+        const datee=res.data;
+        console.log(datee)       
       })
 };
 
 const submitHandler = (e) => {
   e.preventDefault();
   setFormErrors(validateForm(client));
-  setIsSubmit(true);
   getdata();
 };
 const updateHandler = (e) => {
   e.preventDefault();
   //setFormErrors(validateForm(client));
-  //setIsSubmit(true);
   //getitem();
- updatedata();
+   updatedata();
 };
 
 function refreshPage() {

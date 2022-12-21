@@ -57,7 +57,8 @@ router.put('/:id', async(req, res) => {
          }, {new: true})
         res.status(200).json(updatedUser)
     } catch (err) {
-      res.send(500).json(err)  
+      res.send(400).json(err)  
+ 
     }
 })
 router.delete('/:id', async(req, res) => {

@@ -1,18 +1,18 @@
  
 import {  useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
     
 function Addclient() {
-  const sheetId = localStorage.getItem("sheetId");
+ // const sheetId = localStorage.getItem("sheetId");
   const [formErrors, setFormErrors] = useState({});
     const [ setIsSubmit] = useState(false);
     const { id } = useParams();
     // const [items, setItems] = useState([]);
-   
+  
     const [client, setUserDetails] = useState({
         name: "",
         amount: "",
@@ -68,26 +68,25 @@ function Addclient() {
             refreshPage()
           })
    };
-  
+ 
    const getitem = () => {
     axios
-      .get(`${baseUrl}/api/client/${sheetId}`, 
+      .get(`${baseUrl}/api/client/${id}`, 
     )
       .then((response) => {
-        const itemsa = response.data; 
-        //console.log(itemsa.name)
+        const itemsa = response.data;
         setUserDetails(itemsa)
       })
 };
-console.log(sheetId)
+
   const updatedata = () => {
     axios
-      .put(`${baseUrl}/api/client/${sheetId}`, client
+      .put(`${baseUrl}/api/client/${id}`, client
     )
       .then((res) => {
  
         const datee=res.data;
-        console.log(datee)       
+        //console.log(datee)       
       })
 };
 
@@ -99,14 +98,15 @@ const submitHandler = (e) => {
 const updateHandler = (e) => {
   e.preventDefault();
   //setFormErrors(validateForm(client));
-  //getitem();
    updatedata();
 };
 
 function refreshPage() {
 window.location.reload(false);
 }
-
+useEffect(() => {
+  getitem();
+}, []);
     return (
         <div className="flex flex-row h-screen bg-slate-500">
         <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>

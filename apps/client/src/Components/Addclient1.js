@@ -60,6 +60,9 @@ function Addclient() {
                 const handleUpdateclient=()=>{
                 navigate(`/update-client`);
                 };
+                const handleAddnotes=()=>{
+                  navigate(`/add-notes`);
+                }
    const getdata = () => {
         axios
           .post(`${baseUrl}/api/client/register`, client 
@@ -75,7 +78,7 @@ function Addclient() {
 const submitHandler = (e) => {
   e.preventDefault();
   setFormErrors(validateForm(client));
-  getdata();
+ getdata();
 };
  
 
@@ -93,9 +96,9 @@ window.location.reload(false);
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
                     <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4 " >Delete</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handleAddnotes} >Notes</button></span>
                     <span className="flex flex-row "><button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Reffered</button> </span>
                     <div className="py-20">
                     </div>

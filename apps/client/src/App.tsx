@@ -5,6 +5,7 @@ import Login from './Components/Login';
  import Pending from './Components/Pending'
  import Payed from './Components/Payed1';
  import Updatedata from './Components/updatedata'
+ import AddNotes from './Components/AddNotes';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './index.css';
@@ -23,6 +24,7 @@ function App() {
           <Route path ='/pending' element={<Pending/>}/>
           <Route path='/payed' element={<Payed/>}/>
           <Route path='/update-client' element={<Updatedata/>}/>
+          <Route path='/add-notes' element={<AddNotes/>} />
         </Routes>
       </Router>
 

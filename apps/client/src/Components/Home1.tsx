@@ -43,7 +43,9 @@ const handlePending = () => {
   const handleUpdateclient=()=>{
     navigate(`/update-client`);
   }
-   
+  const handleAddnotes=()=>{
+    navigate(`/add-notes`);
+  }
     return (
         <div className="flex flex-row h-screen bg-slate-500">
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
@@ -54,9 +56,9 @@ const handlePending = () => {
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
                     <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " >Deleted Recently</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Delete</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Notes</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handleAddnotes}>Notes</button></span>
                     <span className="flex flex-row "><button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Reffered</button> </span>
                     <div className="py-20">
                     </div>

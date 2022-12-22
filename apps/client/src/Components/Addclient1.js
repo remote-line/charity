@@ -78,7 +78,7 @@ function Addclient() {
 const submitHandler = (e) => {
   e.preventDefault();
   setFormErrors(validateForm(client));
-  getdata();
+ getdata();
 };
  
 

@@ -37,12 +37,6 @@ function AddNotes() {
           error.name = "Name is required";
         }
     
-        if (!values.amount) {
-          error.amount = "Amount is required";
-        }  
-        if(!values.status){
-            error.status="status is required"
-        }
         return error}
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
@@ -65,6 +59,7 @@ function AddNotes() {
               const handleAddnotes=()=>{
                 navigate(`/add-notes`);
               }
+               
  
    const getitem = () => {
     axios
@@ -91,9 +86,8 @@ function AddNotes() {
 const updateHandler = (e) => {
   e.preventDefault();
   //setFormErrors(validateForm(client));
-   updatedata();
-   refreshPage();
-   window.alert("Update the data")
+ 
+ 
 };
 function refreshPage() {
     window.location.reload(false);
@@ -110,7 +104,7 @@ useEffect(() => {
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleaddclient}>Add New</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
+                    <span className="flex flex-row ">  <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Delete</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-4" onclick={handleAddnotes}>Notes</button></span>
@@ -128,10 +122,10 @@ useEffect(() => {
                 <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
    
                  <h1  className="font-bold  font-serif text-center  text-2xl "> Comment Add</h1>
-                 <div className=" grid-flow-row gap-11 px-8 py-10 text-white"> 
+                 <div className=" grid-flow-row gap-11 px-8 py-10 text-black"> 
                
-                <input 
-                    className='h-8 w-30  outline-none text-lg text-black border-2 ml-40 border-gray-900 rounded-lg'
+                <textarea
+                 // className='h-36 px-64 outline-none  text-black border-2 ml-30 border-gray-900 rounded-lg'
                                  type="text"
                                   id="name"
                                   name="name"
@@ -145,7 +139,7 @@ useEffect(() => {
                      
               
                  <button
-                  className="flex text-xl font-bold font-family:ui-serif ml-96 bg-green-600 mt-4 border-2 rounded-lg"
+                  className="flex text-xl font-bold font-family:ui-serif text-white ml-96 bg-green-600 mt-4 border-2 rounded-lg"
                   onClick={updateHandler}
                      >
                       Update Client

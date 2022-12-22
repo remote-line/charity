@@ -6,7 +6,7 @@ import '../index.css';
 import axios from "axios";
 const baseUrl =  'http://localhost:4000';
     
-function Addclient() {
+function AddNotes() {
  // const sheetId = localStorage.getItem("sheetId");
   const [formErrors, setFormErrors] = useState({});
     const [ setIsSubmit] = useState(false);
@@ -65,7 +65,7 @@ function Addclient() {
               const handleAddnotes=()=>{
                 navigate(`/add-notes`);
               }
-                 
+ 
    const getitem = () => {
     axios
       .get(`${baseUrl}/api/client/${id}`, 
@@ -108,12 +108,12 @@ useEffect(() => {
             <div className='pt-10 space-y-4'>
                     <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleaddclient}>Add New</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
                     <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Delete</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handleAddnotes} >Notes</button></span>
+                    <span className="flex flex-row "> <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-4" onclick={handleAddnotes}>Notes</button></span>
                     <span className="flex flex-row "><button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Reffered</button> </span>
                     <div className="py-20">
                     </div>
@@ -182,4 +182,4 @@ useEffect(() => {
     )
 };
 
-export default Addclient;
+export default AddNotes;

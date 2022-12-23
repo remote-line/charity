@@ -5,7 +5,7 @@ import facebook from '../assets/facebook.png'
 import twitter from '../assets/twitter.png'
 import instagram from '../assets/instagram.png'
 
-const headerbtn= "flex flex-row bg-sky-500 w-20  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg   ";
+const headerbtn= "flex flex-row bg-sky-500 px-2  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg   ";
 export default function Header(props) {
     const navigate = useNavigate();
     const handleHome = () => {
@@ -33,14 +33,14 @@ export default function Header(props) {
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-40'>
                 <span className=" rounded-lg  h-7 w-16 font-bold text-3xl text-center">Charity</span>
                 <div className='pt-10 space-y-4'>
-                    <span className="flex flex-row " ><button   className={headerbtn}onClick={handleHome}>Home</button></span>
-                    <span className="flex flex-row "> <button className={headerbtn} onClick={ handleAddclient}>Add New</button></span>
-                    <span className="flex flex-row "> <button className= {headerbtn} onClick={ handleUpdateclient}>Update</button></span>
-                    <span className="flex flex-row " ><button className= {headerbtn} onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row "> <button className= {headerbtn} onClick={handlePayed} >Payed</button></span>
-                    <span className="flex flex-row "> <button className= {headerbtn} >Delete</button></span>
-                   <span className="flex flex-row text-center "> <button className={headerbtn}  onClick={handleAddnotes}>Notes</button></span>
-                    <span className="flex flex-row  text-center "><button className= {headerbtn} >Reffered</button> </span>
+                    <span className="flex flex-row " ><button   className="flex flex-row bg-sky-500 px-4  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  "onClick={handleHome}>Home</button></span>
+                    <span className="flex flex-row "> <button className="flex flex-row bg-sky-500 px-1.5  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  " onClick={ handleAddclient}>Add New</button></span>
+                    <span className="flex flex-row "> <button className= "flex flex-row bg-sky-500 px-3  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  " onClick={ handleUpdateclient}>Update</button></span>
+                    <span className="flex flex-row " ><button className= "flex flex-row bg-sky-500 px-2  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  " onClick={handlePending} >Pending</button></span>
+                    <span className="flex flex-row "> <button className= "flex flex-row bg-sky-500 px-4  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  " onClick={handlePayed} >Payed</button></span>
+                    <span className="flex flex-row "> <button className= "flex flex-row bg-sky-500 px-4 focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  " >Delete</button></span>
+                   <span className="flex flex-row text-center "> <button className="flex flex-row bg-sky-500 px-4  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  "  onClick={handleAddnotes}>Notes</button></span>
+                    <span className="flex flex-row  text-center "><button className= "flex flex-row bg-sky-500 px-2  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  " >Reffered</button> </span>
                     <hr />
                     <div>
                     <a href="/facebook">

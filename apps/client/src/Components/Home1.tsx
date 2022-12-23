@@ -21,17 +21,11 @@ const handlePayed=()=>{
 const handlePending = () => {
     navigate(`/pending`);
   }; 
-  const token = localStorage.getItem("token");
-  console.log(token)
-  
-
+const token = localStorage.getItem("token");
 const config = {
   headers: { Authorization: `Bearer ${token}` }
 };
 
-const bodyParameters = {
- key: "value"
-};
    const getdata = () => {
         axios
           .get(`${baseUrl}/api/client`, 
@@ -68,7 +62,7 @@ const bodyParameters = {
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleAddclient}>Add New</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
                     <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
+                    <span className="flex flex-row ">  <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Delete</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handleAddnotes}>Notes</button></span>

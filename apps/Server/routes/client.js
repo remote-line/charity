@@ -16,7 +16,7 @@ router.post('/register', verifyToken, async (req, res) => {
         res.status(500).json({error:'Client Name already exist '}
    )   }
 })
-router.post("/search", async (req, res) => {
+router.post("/search", verifyToken, async (req, res) => {
     try {
         const search = {};
         // @ts-ignore
@@ -43,7 +43,7 @@ router.get('/', verifyToken, async(req, res) => {
         res.status(500).json({error: 'this is error'}); 
     }
 })
-router.get('/:id',  async(req, res) => {
+router.get('/:id',verifyToken,  async(req, res) => {
     try {
         //console.log(verifyTokenAndAuthorization)
         const user = await User.findById(req.params.id)
@@ -53,7 +53,7 @@ router.get('/:id',  async(req, res) => {
     }
 })
 
-router.put('/:id', async(req, res) => {
+router.put('/:id',verifyToken, async(req, res) => {
     try {         
         const updatedUser = await User.findByIdAndUpdate(req.params.id, {
             $set:req.body            

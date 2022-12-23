@@ -28,12 +28,16 @@ const handlePending = () => {
   const handleAddnotes=()=>{
     navigate(`/add-notes`);
   }
+const token = localStorage.getItem("token");
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};
    const getdata = () => {
         axios
           .post(`${baseUrl}/api/client/search`, 
            {
             status:"Done"
-           }
+           },config
           )
           .then((response) => {
             const items = response.data; 

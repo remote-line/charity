@@ -63,9 +63,13 @@ function Addclient() {
                 const handleAddnotes=()=>{
                   navigate(`/add-notes`);
                 }
+const token = localStorage.getItem("token");
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};
    const getdata = () => {
         axios
-          .post(`${baseUrl}/api/client/register`, client 
+          .post(`${baseUrl}/api/client/register`, client,config 
         )
           .then((response) => {
             console.log("data enter")

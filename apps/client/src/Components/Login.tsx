@@ -34,6 +34,8 @@ function Login() {
           .post(`${baseUrl}/api/user/login`, user
         )
           .then((response) => {
+            const token = response.data.accessToken;
+            localStorage.setItem('token', token);
             navigate('/home'); 
           })
           .catch((error) => {
@@ -56,7 +58,7 @@ function Login() {
                             <div className='form-item'>
                                 <label className='' htmlFor="email"> Enter email</label>
                                 <input 
-                                className='h-14  w-6 outline-none text-lg border-2 border-gray-900 rounded-lg' 
+                                className='h-14 w-full outline-none text-lg border-2 border-gray-900 rounded-lg' 
                                 type="text"
                                  id="firstName"
                                  value={user.email}

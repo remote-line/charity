@@ -21,9 +21,22 @@ const handlePayed=()=>{
 const handlePending = () => {
     navigate(`/pending`);
   }; 
+  const token = localStorage.getItem("token");
+  console.log(token)
+  
+
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};
+
+const bodyParameters = {
+ key: "value"
+};
    const getdata = () => {
         axios
           .get(`${baseUrl}/api/client`, 
+          config
+            ,
         )
           .then((response) => {
             const items = response.data; 

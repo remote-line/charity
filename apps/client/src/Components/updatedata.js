@@ -65,11 +65,14 @@ function Addclient() {
               const handleAddnotes=()=>{
                 navigate(`/add-notes`);
               }
-                 
+const token = localStorage.getItem("token");
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};          
    const getitem = () => {
     axios
       .get(`${baseUrl}/api/client/${id}`, 
-    )
+           config)
       .then((response) => {
         const itemsa = response.data;
         setUserDetails(itemsa)

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+ 
  
 import {  useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
@@ -25,7 +25,7 @@ export default function Header(props) {
             navigate(`/add-notes`);
           }
     return (
-    <div className="absolute h-full"  >
+    <div className="absolute h-full content-between justify-between"  >
   
             <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-36'>
                 <span className=" rounded-lg  h-7 w-16 font-bold text-3xl text-center">Charity</span>
@@ -38,12 +38,10 @@ export default function Header(props) {
                     <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Delete</button></span>
                    <span className="flex flex-row "> <button className=" flex flex-row  focus:ring-green-300 active:bg-red-300 focus:outline-none focus:ring  hover:text-purple-600  border-2 rounded-lg px-4" onClick={handleAddnotes}>Notes</button></span>
                     <span className="flex flex-row "><button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Reffered</button> </span>
-                    <div className="py-20">
-                    </div>
                     <hr />
                 </div>
       
-                     </div> 
+              </div> 
                                  
     </div>
   );

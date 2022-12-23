@@ -5,6 +5,7 @@ import React, {useEffect, useState } from "react";
 import '../index.css';
 import axios from "axios";
 import Header from './Header'
+import TopHeader from './TopHeader';
 const baseUrl =  'http://localhost:4000';
     
 function AddNotes() {
@@ -41,7 +42,10 @@ function AddNotes() {
         return error}
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
-     
+   const token = localStorage.getItem("token");
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};  
  
    const getitem = () => {
     axios
@@ -81,11 +85,8 @@ useEffect(() => {
         
         <>
         <Header />
-        <div className="  bg-slate-700 ">
-                <h2 className="bg-slate-800 text-white font-serif flex px-48 h-24 text-2xl items-center">
-                    Manage Your Beneficiary List
-                </h2>
-                </div>
+        <TopHeader/>
+        
                 <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
    
                  <h1  className="font-bold  font-serif text-center text-black text-2xl "> Comment Add</h1>

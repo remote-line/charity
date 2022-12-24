@@ -34,7 +34,7 @@ function TopHeader(props) {
                 <h2 className=" text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
                     Manage Your Beneficiary List
                 </h2>
-                <img  className='h-10 w-12 ml-80 ml-4'  src={user}></img>
+                <img  className='h-10 w-12 ml-80'  src={user}></img>
                 <DropDown1/>
                   
                 </div>

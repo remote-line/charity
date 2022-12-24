@@ -15,8 +15,14 @@ const baseUrl =  'http://localhost:4000';
     email: "",
     password: "",
     cpassword: "",
+ 
   });
 
+ const [file, setFile] = useState();
+  function handleChange(e) {
+      console.log(e.target.files);
+      setFile(URL.createObjectURL(e.target.files[0]));
+  }
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setUserDetails({
@@ -59,13 +65,13 @@ const baseUrl =  'http://localhost:4000';
     //   setIsSubmit(true);
     // }
     createAccount();
-    goBack();
+   // goBack();
     
   };
 
   const createAccount = () => {
     axios
-      .post(`${baseUrl}/api/user/register`, user
+      .post(`${baseUrl}/api/user/register`, user,{file}
     )
       .then((response) => {
      
@@ -80,7 +86,7 @@ const baseUrl =  'http://localhost:4000';
 
     return (
         <div className="h-screen bg-slate-800 grid grid-flow-row md:grid md:grid-flow-col p-8 overflow-hidden">
-            <div className='login-left flex flex-col justify-center px-36 bg-white rounded-l-xl'>
+            <div className='login-leftw-96 flex flex-col justify-center px-36 bg-white rounded-l-xl'>
                 <div className='login-header'>
                     <h1 className='text-2xl font-bold py-3'>Welcome to our application</h1>
                     <p className='font-bold'>Please Sign up to make an account</p>
@@ -89,7 +95,7 @@ const baseUrl =  'http://localhost:4000';
                     <div className='login-form '>
                         <div className='login-form-content'>
                             <div className='form-item'>
-                                <label className='' htmlFor="name"> Enter your full name</label>
+                                <label className='' htmlFor="name"> Enter  name</label>
                                 <input 
                                 className='h-14  w-full outline-none text-lg border-2 border-gray-900 rounded-lg'
                                  type="text"
@@ -98,12 +104,12 @@ const baseUrl =  'http://localhost:4000';
                                 onChange={changeHandler}
                               value={user.fname}
                                    />
-                                <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.username}</p>
+                                <p className='color-red' style={{ color: 'red', fontSize: '14px' } }>{formErrors.username}</p>
                             </div>
                             <div className='form-item'>
                                 <label className='' htmlFor="email"> Enter email</label>
                                 <input
-                                 className='h-14  w-full outline-none text-lg border-2 border-gray-900 rounded-lg'
+                                 className='h-14  w-full   outline-none text-lg border-2 border-gray-900 rounded-lg'
                                   name="email" 
                                  type="text" 
                                   id="email" 
@@ -140,14 +146,19 @@ const baseUrl =  'http://localhost:4000';
                                  >
                                     Sign Up
                                  </button>
+                                
                             </div>
                         </div>
 
                     </div>
                 </form>
             </div>
-            <div className='login-right bg-slate-400 flex justify-center rounded-r-xl'>
-                <img className='rounded-r-lg' src={require('../assets/donate.jpg')} alt="donate" />
+            <div className='login-right bg-white flex justify-center rounded-r-xl'>
+            <div className="mt-20 ml-10">
+            <img className="w-40 h-40  rounded-full" src={file} />  
+            <input type="file" onChange={handleChange} />
+          </div>
+                <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />
             </div>
         </div>
     );

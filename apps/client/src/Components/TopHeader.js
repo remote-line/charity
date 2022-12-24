@@ -40,7 +40,6 @@ function TopHeader(props) {
                   
                 </div>
                  </HeaderBar>
-        
     )
 };
 

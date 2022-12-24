@@ -13,6 +13,7 @@ router.post('/register', async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
+            profilepicture:req.body.profilepicture,
             isAdmin: req.body.isAdmin
         })
         const user = await newUser.save()

@@ -49,25 +49,7 @@ function Addclient() {
         return error}
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
-        const handleHome = () => {
-            navigate(`/home`);
-             }; 
-             const handleaddclient = () => {
-                navigate(`/add-client`);
-                   
-              }; 
-              const handlePending = () => {
-                navigate(`/pending`);
-              }; 
-              const handlePayed=()=>{
-                navigate(`/payed`);
-              }
-              const handleUpdateclient=()=>{
-                navigate(`/update-client`);
-              }
-              const handleAddnotes=()=>{
-                navigate(`/add-notes`);
-              }
+         
 const token = localStorage.getItem("token");
 const config = {
   headers: { Authorization: `Bearer ${token}` }
@@ -112,21 +94,14 @@ useEffect(() => {
      
       <TopHeader/>
     <div className='pt-20' > <Header /></div> 
-<div className="flex flex-row h-screen gap-11  px-2 py-10 text-black"  style={{backgroundImage:`url(${backgrd})`}} >
+<div className="flex flex-row h-screen gap-11 px-2 py-10 text-black"  style={{backgroundImage:`url(${backgrd})`}} >
         
-        <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
-            <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
-            <div className='pt-10 space-y-4'>
-                  
-                    <hr />
-                </div>
-            </div>
-            <div className="  w-screen h-screen bg-slate-700 ">
+
             
-                <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
+                <div   className="ml-80  ">
    
                  <h1  className="font-bold  font-serif text-center  text-2xl "> Client Add</h1>
-                 <div className=" grid-flow-row gap-11 px-8 py-10 text-white"> 
+                 <div className=" grid-flow-row gap-11 px-8 py-10   "> 
                 <label className="text-xl font-bold ml-20 font-family: ui-serif pl-20">Name</label> 
                 <input 
                     className='h-8 w-30  outline-none text-lg text-black border-2 ml-40 border-gray-900 rounded-lg'
@@ -176,7 +151,6 @@ useEffect(() => {
                       </div> 
                 </div>
             </div>
-        </div>
         </>
     )
 };

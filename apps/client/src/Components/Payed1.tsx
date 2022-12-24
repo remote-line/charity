@@ -2,6 +2,9 @@ import {  useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, } from "react";
 import '../index.css';
 import axios from "axios";
+import Header from './Header'
+import TopHeader from './TopHeader';
+import backgrd from '../assets/backgrd.jpg'
 const baseUrl =  'http://localhost:4000';
  
 function Payed() {

@@ -30,14 +30,12 @@ function TopHeader(props) {
     return (
         <HeaderBar>
              <img src={logo} className="h-12 ml-6 w-12  rounded-lg  " alt="Xcelvations Logo" height="40" />
-               <div className=" flex  flex-col   ">
-                <h2 className="flex text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
+               <div className=" flex    ">
+                <h2 className=" text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
                     Manage Your Beneficiary List
                 </h2>
-                 
-                <img  className='h-12 w-12 ml-20'  src={user}></img>
-                
-                  <DropDown1/>
+                <img  className='h-10 w-12 ml-80 ml-4'  src={user}></img>
+                <DropDown1/>
                   
                 </div>
                  </HeaderBar>

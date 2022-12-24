@@ -80,7 +80,7 @@ export default function Header(props) {
                     <a href="/facebook">
                     <img alt="" className="h-6 w-6 mt-2" src={facebook} />
                     </a>
-                    <a href="/instgram">
+                    <a   href="/instgram">
                     <img alt="" className="h-6 w-6 mt-2" src={instagram} />
                     </a>
                     <a href="/twitter">

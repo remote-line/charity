@@ -98,10 +98,12 @@ window.location.reload(false);
      
       <TopHeader/>
     <div className='pt-20' > <Header /></div> 
-                <div   className=" g-slate-700  gap-11 px-2 py-10 text-Black">
+<div className="flex flex-row h-screen gap-11  px-2 py-10 text-black"  style={{backgroundImage:`url(${backgrd})`}} >
+             
+                <div   className="ml-80 ">
    
                  <h1  className="font-bold  font-serif text-center  text-2xl "> Client Add</h1>
-                 <div className=" grid-flow-row gap-11 px-8 py-10 "> 
+                 <div className=" grid-flow-row gap-11 px-8 py-10  "> 
                 <label className="text-xl font-bold ml-20 font-family: ui-serif pl-20">Name</label> 
                 <input 
                     className='h-8 w-30  outline-none text-lg text-black border-2 ml-40 border-gray-900 rounded-lg'
@@ -138,7 +140,7 @@ window.location.reload(false);
                                   value={client.status}
                     />
                 <p className='text-xl ml-48 pl-48 py-2 font-bold' style={{ color: 'black', fontSize: '16px'}  }>{formErrors.status}</p>
-                  <div className='flex text-xl  font-bold font-family:ui-serif  '>
+                  <div className='flex text-xl  font-bold font-family:ui-serif'>
                     <button 
                 className="flex  text-xl ml-96 font-bold font-family:ui-serif mt-4 bg-green-600 border-2 rounded-lg px-2"
                    onClick={submitHandler}>
@@ -148,7 +150,9 @@ window.location.reload(false);
                      </div>
                       </div> 
                 </div>
-           </>
+            </div>
+     
+        </>
     )
 };
 

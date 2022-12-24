@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../models/client')
-router.post('/register', async (req, res) => {
+const {verifyTokenAndAuthorization,verifyToken}= require('./verifyToken')
+router.post('/register', verifyToken, async (req, res) => {
     try {
         const newUser = new User({
             name: req.body.name,
@@ -15,7 +16,7 @@ router.post('/register', async (req, res) => {
         res.status(500).json({error:'Client Name already exist '}
    )   }
 })
-router.post("/search", async (req, res) => {
+router.post("/search", verifyToken, async (req, res) => {
     try {
         const search = {};
         // @ts-ignore
@@ -31,26 +32,28 @@ router.post("/search", async (req, res) => {
 
 
 
-router.get('/', async(req, res) => {
+router.get('/', verifyToken, async(req, res) => {
     //const query = req.query.new
     try {
+   /// console.log(verifyToken)
         const users = await User.find()
        // const users = query ? await User.find().sort({_id:-1}).limits(5) : await User.find()
         res.status(200).json(users)
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json({error: 'this is error'}); 
     }
 })
-router.get('/:id', async(req, res) => {
+router.get('/:id',verifyToken,  async(req, res) => {
     try {
+        //console.log(verifyTokenAndAuthorization)
         const user = await User.findById(req.params.id)
         res.status(200).json(user)
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json({error: 'this is error'}); 
     }
 })
 
-router.put('/:id', async(req, res) => {
+router.put('/:id',verifyToken, async(req, res) => {
     try {         
         const updatedUser = await User.findByIdAndUpdate(req.params.id, {
             $set:req.body            

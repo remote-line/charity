@@ -17,6 +17,7 @@ router.post('/register', async (req, res) => {
         })
         const user = await newUser.save()
         const result = await authSchema.validateAsync(req.body)
+        
         res.status(200).json(user)
     } catch (error) {
         res.status(500).json(error)
@@ -46,6 +47,7 @@ router.post('/login', async (req, res) => {
             )
             const {password, ...others} = user._doc
             res.status(200).json({...others, accessToken}) 
+          
 
 
          //   res.status(200).json(user);
@@ -53,7 +55,7 @@ router.post('/login', async (req, res) => {
        else{ res.status(400).send("Invalid Credentials")} }
         
     catch (err) {
-        res.status(500).json(err)
+        res.status(500).json({error: 'this is error from login'}); 
     }
 });
  

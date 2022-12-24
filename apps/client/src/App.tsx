@@ -6,6 +6,7 @@ import Login from './Components/Login';
  import Payed from './Components/Payed1';
  import Updatedata from './Components/updatedata'
  import AddNotes from './Components/AddNotes';
+ import DropDown1 from './Components/Dropdown';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './index.css';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/payed' element={<Payed/>}/>
           <Route path='/update-client' element={<Updatedata/>}/>
           <Route path='/add-notes' element={<AddNotes/>} />
+          <Route path='/dropdwon' element={<DropDown1/>} />
         </Routes>
       </Router>
 

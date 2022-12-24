@@ -108,21 +108,16 @@ useEffect(() => {
   getitem();
 }, []);
     return (
-        <div className="flex flex-row h-screen bg-slate-500">
+          <>
+     
+      <TopHeader/>
+    <div className='pt-20' > <Header /></div> 
+<div className="flex flex-row h-screen gap-11  px-2 py-10 text-black"  style={{backgroundImage:`url(${backgrd})`}} >
+        
         <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-72'>
             <span className=" rounded-lg h-7 w-16 font-bold text-3xl text-center">Charity</span>
             <div className='pt-10 space-y-4'>
-                    <span className="flex flex-row " ><button   className=" flex flex-row bg-sky-500 hover:text-purple-600 active:bg-black-200 border-2 rounded-lg px-4" onClick={handleHome}>Home</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleaddclient}>Add New</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-green-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={ handleUpdateclient}>update</button></span>
-                    <span className="flex flex-row " > <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" onClick={handlePending} >Pending</button></span>
-                    <span className="flex flex-row ">   <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handlePayed} >Payed</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" >Delete</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg " > Reminders</button></span>
-                    <span className="flex flex-row "> <button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-4" onClick={handleAddnotes} >Notes</button></span>
-                    <span className="flex flex-row "><button className=" flex flex-row bg-sky-500 hover:text-purple-600  border-2 rounded-lg px-2" >Reffered</button> </span>
-                    <div className="py-20">
-                    </div>
+                  
                     <hr />
                 </div>
             </div>
@@ -185,6 +180,7 @@ useEffect(() => {
                 </div>
             </div>
         </div>
+        </>
     )
 };
 

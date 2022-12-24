@@ -48,8 +48,8 @@ const config = {
      
       <TopHeader/>
     <div className='pt-20' > <Header /></div> 
-            <div className="item-center "  >
-                <div   className=" gap-10 item center border-2  px-2 py-10"  style={{backgroundImage:`url(${backgrd})`}}>
+            <div className="item-center "  style={{backgroundImage:`url(${backgrd})`}} >
+                <div   className=" gap-10 item center border-2  px-2 py-10" >
                  <h1  className="font-bold  font-serif text-center text-black  text-2xl "> Client Detail</h1>
                  <div className="  grid-flow-row item-center gap-11 px-8 py-10 text-white"> 
 

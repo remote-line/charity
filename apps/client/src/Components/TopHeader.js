@@ -35,6 +35,7 @@ function TopHeader(props) {
                     Manage Your Beneficiary List
                 </h2>
                 <img  className='h-10 w-12 ml-80'  src={user}></img>
+              <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
                   
                 </div>

@@ -122,10 +122,7 @@ useEffect(() => {
                 </div>
             </div>
             <div className="  w-screen h-screen bg-slate-700 ">
-                <h2 className="bg-slate-800 text-white font-serif flex px-2 h-24 text-2xl items-center">
-                    Manage Your Beneficiary List
-                </h2>
-                
+            
                 <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
    
                  <h1  className="font-bold  font-serif text-center  text-2xl "> Client Add</h1>

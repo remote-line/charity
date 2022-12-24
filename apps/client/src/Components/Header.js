@@ -4,8 +4,42 @@ import { useParams } from "react-router-dom";
 import facebook from '../assets/facebook.png'
 import twitter from '../assets/twitter.png'
 import instagram from '../assets/instagram.png'
-
-const headerbtn= "flex flex-row bg-sky-500 px-2  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg   ";
+import styled from 'styled-components';
+const Nav = styled.nav`
+    padding: 1em;
+    background: #f7f3e9;
+    background-color: red;
+    @media (max-width: 800px) {
+        padding-top: px;
+    }
+    @media (min-width: 700px) {
+        position: fixed;
+        width: 190px;
+        height: calc(100% - 64px);
+        overflow-y: scroll;
+        
+    }
+`;
+const NavList = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 2;
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        color: #333;
+    }
+    a:visited {
+        color: #333;
+    }
+    a:hover,
+    a:focus {
+        color: #0077cc;
+    }
+`;
+const headerbtn= "flex flex-row bg-sky-500 focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg   ";
 export default function Header(props) {
     const navigate = useNavigate();
     const handleHome = () => {
@@ -28,9 +62,10 @@ export default function Header(props) {
             navigate(`/add-notes`);
           }
     return (
-    <div className="absolute h-full content-between justify-between"  >
+      <Nav>
+    <div className="  h-full content-between justify-between"  >
   
-            <div className='flex flex-col px-8 py-8 gap-3 bg-slate-800 text-white h-screen w-40'>
+            <div className='flex flex-col px-8 pt-10 gap-3 bg-slate-800 text-white h-screen w-40'>
                 <span className=" rounded-lg  h-7 w-16 font-bold text-3xl text-center">Charity</span>
                 <div className='pt-10 space-y-4'>
                     <span className="flex flex-row " ><button   className="flex flex-row bg-sky-500 px-4  focus:ring-green-300 active:bg-green-700 focus:outline-none focus:ring  hover:text-green-600  border-2 rounded-lg  "onClick={handleHome}>Home</button></span>
@@ -55,8 +90,8 @@ export default function Header(props) {
                     </div>
                 </div>
       
-              </div> 
-                                 
+              </div>                                 
     </div>
+    </Nav>
   );
 }

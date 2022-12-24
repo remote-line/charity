@@ -6,6 +6,7 @@ import '../index.css';
 import axios from "axios";
 import Header from './Header'
 import TopHeader from './TopHeader';
+import DropDown1 from './Dropdown'
 const baseUrl =  'http://localhost:4000';
     
 function AddNotes() {
@@ -84,9 +85,9 @@ useEffect(() => {
     return (
         
         <>
-        <Header />
+     
         <TopHeader/>
-        
+      <div className='pt-20'> <Header /></div> 
                 <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
    
                  <h1  className="font-bold  font-serif text-center text-black text-2xl "> Comment Add</h1>
@@ -113,6 +114,7 @@ useEffect(() => {
                       Update Client
                      </button>
                      </div>
+                    <div className='item-center px-96'>  </div>
                       </div> 
                 </div>
                 </>

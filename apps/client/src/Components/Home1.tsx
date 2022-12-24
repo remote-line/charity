@@ -53,7 +53,7 @@ const config = {
                  <h1  className="font-bold  font-serif text-center text-black  text-2xl "> Client Detail</h1>
                  <div className="  grid-flow-row item-center gap-11 px-8 py-10 text-white"> 
 
-                <table className="  bg-slate-600 table-fixed ml-48 text-center border-2 border-red" style={{
+                <table className="  bg-slate-600 table-fixed ml-48 text-center border-2" style={{
                     width: 600}} >
                 <thead className="bg-b9green2 border border-white h-14">
                 <tr className="text-md font-bold">
@@ -66,12 +66,12 @@ const config = {
               </th> 
               <th
                 
-                className="px-1 border border-white bg-sky-600" style={{
+                className="px-1 border border-white bg-sky-500" style={{
                     width: 300}}
               >
                 Amount
               </th> 
-             <th className="px-1 border border-white bg-sky-600" style={{
+             <th className="px-1 border border-white bg-sky-500" style={{
                     width: 300}}
               >
                 Status

@@ -48,24 +48,6 @@ function Addclient() {
         return error}
    // const transit = localStorage.getdata("transit").split(","); 
     const navigate = useNavigate();
-           const handleHome = () => {
-              navigate(`/home`);
-              }; 
-             const handleaddclient = () => {
-                navigate(`/add-client`);
-               }; 
-              const handlePending = () => {
-                navigate(`/pending`);
-                }; 
-              const handlePayed=()=>{
-                navigate(`/payed`);
-                };
-                const handleUpdateclient=()=>{
-                navigate(`/update-client`);
-                };
-                const handleAddnotes=()=>{
-                  navigate(`/add-notes`);
-                }
 const token = localStorage.getItem("token");
 const config = {
   headers: { Authorization: `Bearer ${token}` }

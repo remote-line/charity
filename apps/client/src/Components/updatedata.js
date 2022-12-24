@@ -100,7 +100,7 @@ useEffect(() => {
             
                 <div   className="ml-80  ">
    
-                 <h1  className="font-bold  font-serif text-center  text-2xl "> Client Add</h1>
+                 <h1  className="font-bold  font-serif text-center  text-2xl "> Client Update</h1>
                  <div className=" grid-flow-row gap-11 px-8 py-10   "> 
                 <label className="text-xl font-bold ml-20 font-family: ui-serif pl-20">Name</label> 
                 <input 

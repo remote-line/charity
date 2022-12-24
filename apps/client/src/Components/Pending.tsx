@@ -59,10 +59,10 @@ const config = {
      
       <TopHeader/>
     <div className='pt-20' > <Header /></div> 
-            <div className="item-center "  >
-                <div   className=" gap-10 item center border-2  px-2 py-10"  style={{backgroundImage:`url(${backgrd})`}}>
+            <div className="item-center   border-black border-2"  >
+              <div   className=" gap-10 border-black border-2   px-2 py-10"  style={{backgroundImage:`url(${backgrd})`}}>
                  <h1  className="font-bold  font-serif text-center  text-2xl "> Client Detail</h1>
-                 <div className=" grid grid-cols-3 grid-flow-row gap-11 px-8 py-10 text-white"> 
+                 <div className="  border-black border-2  gap-11 px-8 py-10 text-white"> 
 
                 <table className="  table-fixed text-center  border-white" style={{
                     width: 600}} >
@@ -100,7 +100,8 @@ const config = {
                ))}
 
 
-              </table></div>
+              </table>
+              </div>
            
                 </div>
             </div>

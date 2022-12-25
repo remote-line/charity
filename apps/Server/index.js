@@ -17,9 +17,11 @@ app.use(express.json())
 const userRoute = require('./routes/User')
 const authRoute = require('./routes/auth')
  const clientRoute = require('./routes/client')
+ const profileRoute = require('./routes/Profile')
 app.use('/api/user', userRoute)
 app.use('/api/auth', authRoute)
 app.use('/api/client', clientRoute)
+app.use('/api/profile', profileRoute)
 app.listen(port, () => {
   console.log(`server is listening on Port: ${port}`);
 })

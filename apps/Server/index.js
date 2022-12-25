@@ -22,6 +22,7 @@ app.use('/api/user', userRoute)
 app.use('/api/auth', authRoute)
 app.use('/api/client', clientRoute)
 app.use('/api/profile', profileRoute)
+
 app.listen(port, () => {
   console.log(`server is listening on Port: ${port}`);
 })

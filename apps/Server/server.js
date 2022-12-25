@@ -3,9 +3,8 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
 const productRoutes = require("./routes/Profile");
- 
+
 var mongoDB = 'mongodb://127.0.0.1/profile';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var cors = require('cors');
@@ -58,4 +57,8 @@ app.use((error, req, res, next) => {
   });
 });
 
+ const port=4000;
+app.listen(port, () => {
+  console.log(`server is listening on Port: ${port}`);
+});
 module.exports = app;

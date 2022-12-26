@@ -17,7 +17,7 @@ const baseUrl =  'http://localhost:4000';
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
-  const [file, setFile] = useState();
+  const [productImage, setFile] = useState();
   function handleChange(e) {
       setFile(URL.createObjectURL(e.target.files[0]));
   }
@@ -87,7 +87,7 @@ const baseUrl =  'http://localhost:4000';
         username,
         email,
         password,
-        file
+        productImage
       }
     )
       .then((response) => {
@@ -172,7 +172,7 @@ const baseUrl =  'http://localhost:4000';
             </div>
             <div className='login-right bg-white flex justify-center rounded-r-xl'>
             <div className="mt-20 ml-10">
-            <img className="w-40 h-40   rounded-full" src={file} />  
+            <img className="w-40 h-40   rounded-full" src={productImage} />  
             <input type="file"  onChange={handleChange} />
           </div>
                 <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />

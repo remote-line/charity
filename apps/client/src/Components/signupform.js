@@ -55,7 +55,10 @@ const baseUrl =  'http://localhost:4000';
       error.cpassword = "Confirm Password is required";
     } else if (values.cpassword !== values.password) {
       error.cpassword = "Confirm password and password should be same";
+     }else    if (!values.file) {
+      error.username = "Picture is required";
     }
+
     return error;
   };
   const signupHandler = (e) => {
@@ -72,7 +75,7 @@ const baseUrl =  'http://localhost:4000';
 
   const createAccount = () => {
     axios
-      .post(`${baseUrl}/api/user/register`,(file, user)
+      .post(`${baseUrl}/api/user/register`,(user,{file})
     )
       .then((response) => {
      
@@ -156,8 +159,9 @@ const baseUrl =  'http://localhost:4000';
             </div>
             <div className='login-right bg-white flex justify-center rounded-r-xl'>
             <div className="mt-20 ml-10">
-            <img className="w-40 h-40  rounded-full" src={file} />  
-            <input type="file" value={user.productImage} onChange={handleChange} />
+            <img className="w-40 h-40   rounded-full" src={file} />  
+            <input type="file" value={file} onChange={handleChange} />
+             <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.file}</p>
           </div>
                 <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />
             </div>

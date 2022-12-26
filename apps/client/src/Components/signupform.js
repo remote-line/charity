@@ -75,7 +75,7 @@ const baseUrl =  'http://localhost:4000';
 
   const createAccount = () => {
     axios
-      .post(`${baseUrl}/api/user/register`,(user,{file})
+      .post(`${baseUrl}/api/user/register`,(user.username)
     )
       .then((response) => {
      

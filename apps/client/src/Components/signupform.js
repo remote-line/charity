@@ -25,13 +25,9 @@ const baseUrl =  'http://localhost:4000';
   const handleInputChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
-    if (id === "firstName") {
+    if (id === "username") {
       e.preventDefault();
       setFirstName(value);
-    }
-    if (id === "lastName") {
-      e.preventDefault();
-      setLastName(value);
     }
     if (id === "email") {
       e.preventDefault();
@@ -40,7 +36,12 @@ const baseUrl =  'http://localhost:4000';
     if (id === "password") {
       e.preventDefault();
       setPassword(value);
-    }}
+    }
+    if (id === "cpassword") {
+      e.preventDefault();
+      setCPassword(value);
+    }
+  }
   const validateForm = (values) => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;

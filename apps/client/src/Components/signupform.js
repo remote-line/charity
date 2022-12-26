@@ -12,27 +12,35 @@ const baseUrl =  'http://localhost:4000';
   const [isSubmit, setIsSubmit] = useState(false);
   
   const [user, setUserDetails] = useState({
-    username: "",
-    email: "",
-    password: "",
-    cpassword: "",
- 
- 
   });
-
- const [file, setFile] = useState();
+  const [username, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
+  const [file, setFile] = useState();
   function handleChange(e) {
       setFile(URL.createObjectURL(e.target.files[0]));
   }
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setUserDetails({
-      ...user,
-      [name]: value,
-    });
-
-  };
-
+  
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { id, value } = e.target;
+    if (id === "firstName") {
+      e.preventDefault();
+      setFirstName(value);
+    }
+    if (id === "lastName") {
+      e.preventDefault();
+      setLastName(value);
+    }
+    if (id === "email") {
+      e.preventDefault();
+      setEmail(value);
+    }
+    if (id === "password") {
+      e.preventDefault();
+      setPassword(value);
+    }}
   const validateForm = (values) => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;

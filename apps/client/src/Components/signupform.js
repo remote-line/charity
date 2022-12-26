@@ -19,7 +19,7 @@ const baseUrl =  'http://localhost:4000';
   const [cpassword, setCPassword] = useState("");
   const [productImage, setFile] = useState();
   function handleChange(e) {
- //     setFile(URL.createObjectURL(e.target.files[0]));
+      setFile(URL.createObjectURL(e.target.files[0]));
   }
   
   const handleInputChange = (e) => {

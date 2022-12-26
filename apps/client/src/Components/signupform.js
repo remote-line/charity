@@ -16,11 +16,11 @@ const baseUrl =  'http://localhost:4000';
     password: "",
     cpassword: "",
  
+ 
   });
 
  const [file, setFile] = useState();
   function handleChange(e) {
-      console.log(e.target.files);
       setFile(URL.createObjectURL(e.target.files[0]));
   }
   const changeHandler = (e) => {
@@ -29,6 +29,7 @@ const baseUrl =  'http://localhost:4000';
       ...user,
       [name]: value,
     });
+
   };
 
   const validateForm = (values) => {
@@ -71,7 +72,7 @@ const baseUrl =  'http://localhost:4000';
 
   const createAccount = () => {
     axios
-      .post(`${baseUrl}/api/user/register`, user,{file}
+      .post(`${baseUrl}/api/user/register`,(file, user)
     )
       .then((response) => {
      
@@ -156,7 +157,7 @@ const baseUrl =  'http://localhost:4000';
             <div className='login-right bg-white flex justify-center rounded-r-xl'>
             <div className="mt-20 ml-10">
             <img className="w-40 h-40  rounded-full" src={file} />  
-            <input type="file" onChange={handleChange} />
+            <input type="file" value={user.productImage} onChange={handleChange} />
           </div>
                 <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />
             </div>

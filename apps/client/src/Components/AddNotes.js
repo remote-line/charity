@@ -23,6 +23,7 @@ function AddNotes() {
  
       });
     
+       
       const changeHandler = (e) => {
         const { name, value } = e.target;
         setUserDetails({

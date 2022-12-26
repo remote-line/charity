@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import '../index.css';
@@ -71,13 +71,14 @@ const baseUrl =  'http://localhost:4000';
   };
   const signupHandler = (e) => {
     e.preventDefault();
-   // setFormErrors(validateForm(user));
+   // setForm9Errors(validateForm(user));
     setIsSubmit(true);
     // if (!formErrors) {
     //   setIsSubmit(true);
     // }
-    createAccount();
+    //createAccount();
    // goBack();
+   uploaddata()
     
   };
 
@@ -94,10 +95,35 @@ const baseUrl =  'http://localhost:4000';
      
         toast.success("User Created");
         alert(response.data.message);
-        
-        
+                
       });
   };
+  const uploaddata= useCallback(async (e) => {
+    
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("productImage", productImage);
+      const url = `${baseUrl}/api/user/register`;
+      const options = {
+        url: url,
+        method: "POST",
+        headers: {
+          "content-type": "multipart/form-data"
+        },
+        data: formData,
+      };
+      try {
+        await axios(options);
+        setFile(null);
+        toast.success("File uploaded successfully.");
+      } catch (error) {
+        
+        toast.error(error.response.data.message)
+      }
+
+    }  );
   const goBack = () => {
     navigate(-1);}
 
@@ -170,7 +196,7 @@ const baseUrl =  'http://localhost:4000';
                     </div>
                 </form>
             </div>
-            <div className='login-right bg-white flex justify-center rounded-r-xl'>
+            <div className='login-right bg-white flex justify-center rounded-r-xl'  method="POST"  enctype="multipart/form-data">
             <div className="mt-20 ml-10">
             <img className="w-40 h-40   rounded-full" src={productImage} />  
             <input type="file"  onChange={handleChange} />

@@ -118,8 +118,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="text"
                                  name="username" 
                                 id="username"
-                                onChange={changeHandler}
-                              value={user.fname}
+                                onChange={handleInputChange }
+                              value={username}
                                    />
                                 <p className='color-red' style={{ color: 'red', fontSize: '14px' } }>{formErrors.username}</p>
                             </div>
@@ -130,7 +130,7 @@ const baseUrl =  'http://localhost:4000';
                                   name="email" 
                                  type="text" 
                                   id="email" 
-                                  value={user.email}
+                                  value={email}
                                   onChange={changeHandler}/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.email}</p>
                             </div>

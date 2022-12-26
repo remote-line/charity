@@ -131,7 +131,7 @@ const baseUrl =  'http://localhost:4000';
                                  type="text" 
                                   id="email" 
                                   value={email}
-                                  onChange={changeHandler}/>
+                                  onChange={handleInputChange }/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.email}</p>
                             </div>
                             <div className='form-item'>
@@ -141,8 +141,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="password"
                                  name="password"
                                   id="password"
-                                  value={user.password}
-                                  onChange={changeHandler} />
+                                  value={password}
+                                  onChange={handleInputChange } />
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.password}</p>
                             </div>
                             <div className='form-item'>
@@ -151,8 +151,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="password" 
                                  id="cpassword"
                                  name="cpassword" 
-                                  value={user.cpassword}
-                                  onChange={changeHandler}/>
+                                  value={cpassword}
+                                  onChange={handleInputChange }/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.cpassword}</p>
                             </div>
                             <div className='py-4'>

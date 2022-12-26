@@ -65,9 +65,7 @@ const baseUrl =  'http://localhost:4000';
       error.cpassword = "Confirm Password is required";
     } else if (values.cpassword !== values.password) {
       error.cpassword = "Confirm password and password should be same";
-     }else    if (!values.file) {
-      error.username = "UserName is required";
-    }
+     } 
 
     return error;
   };

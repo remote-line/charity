@@ -22,6 +22,7 @@ const baseUrl =  'http://localhost:4000';
       setFile(URL.createObjectURL(e.target.files[0]));
   }
   
+  console.log(productImage)
   const handleInputChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;

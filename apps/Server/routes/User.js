@@ -37,7 +37,7 @@ router.post("/register", upload.single('productImage'), async(req, res, next) =>
  
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(req.body.password, salt)
-  console.log(req.file);
+  console.log(req.file.path);
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     username: req.body.username,

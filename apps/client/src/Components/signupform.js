@@ -10,27 +10,35 @@ const baseUrl =  'http://localhost:4000';
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [user, setUserDetails] = useState({
-    username: "",
-    email: "",
-    password: "",
-    cpassword: "",
  
- 
-  });
-
+  const [username, setusername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
  const [file, setFile] = useState();
+ const handleInputChange = (e) => {
+  e.preventDefault();
+  const { id, value } = e.target;
+  if (id === "username") {
+    e.preventDefault();
+    setusername(value);
+  }
+  if (id === "email") {
+    e.preventDefault();
+    setEmail(value);
+  }
+  if (id === "password") {
+    e.preventDefault();
+    setPassword(value);
+  }
+  if (id === "cpassword") {
+    e.preventDefault();
+    setCPassword(value);
+  }}
   function handleChange(e) {
       setFile(URL.createObjectURL(e.target.files[0]));
   }
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setUserDetails({
-      ...user,
-      [name]: value,
-    });
 
-  };
 
   const validateForm = (values) => {
     const error = {};
@@ -56,9 +64,8 @@ const baseUrl =  'http://localhost:4000';
     } else if (values.cpassword !== values.password) {
       error.cpassword = "Confirm password and password should be same";
      }else    if (!values.file) {
-      error.username = "Picture is required";
+      error.file = "Picture is required";
     }
-
     return error;
   };
   const signupHandler = (e) => {
@@ -75,7 +82,12 @@ const baseUrl =  'http://localhost:4000';
 
   const createAccount = () => {
     axios
-      .post(`${baseUrl}/api/user/register`,(user.username)
+      .post(`${baseUrl}/api/user/register`,{
+        username,
+        email,
+        password,
+        file
+      }
     )
       .then((response) => {
      
@@ -105,8 +117,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="text"
                                  name="username" 
                                 id="username"
-                                onChange={changeHandler}
-                              value={user.fname}
+                                onChange={handleInputChange}
+                              value={username}
                                    />
                                 <p className='color-red' style={{ color: 'red', fontSize: '14px' } }>{formErrors.username}</p>
                             </div>
@@ -117,8 +129,8 @@ const baseUrl =  'http://localhost:4000';
                                   name="email" 
                                  type="text" 
                                   id="email" 
-                                  value={user.email}
-                                  onChange={changeHandler}/>
+                                  value={email}
+                                  onChange={handleInputChange}/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.email}</p>
                             </div>
                             <div className='form-item'>
@@ -128,8 +140,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="password"
                                  name="password"
                                   id="password"
-                                  value={user.password}
-                                  onChange={changeHandler} />
+                                  value={password}
+                                  onChange={handleInputChange} />
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.password}</p>
                             </div>
                             <div className='form-item'>
@@ -138,8 +150,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="password" 
                                  id="cpassword"
                                  name="cpassword" 
-                                  value={user.cpassword}
-                                  onChange={changeHandler}/>
+                                  value={cpassword}
+                                  onChange={handleInputChange}/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.cpassword}</p>
                             </div>
                             <div className='py-4'>

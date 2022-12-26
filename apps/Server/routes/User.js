@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, './uploads');
   },
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-')+ file.originalname);
+    cb(null, new Date().toISOString()+ file.originalname);
   }
 });
 
@@ -37,6 +37,7 @@ router.post("/register", upload.single('productImage'), async(req, res, next) =>
  
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(req.body.password, salt)
+  console.log(req.file);
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     username: req.body.username,

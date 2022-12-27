@@ -22,22 +22,21 @@ const HeaderBar = styled.header`
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25);
     z-index: 1;
 `;
-
-
 function TopHeader(props) {
-    const getdata = () => {
+    const [items, setItems] = useState<any>([]);
+    const getdatauser = () => {
         axios
-          .get(`${baseUrl}/api/client`, 
-          config
-            ,
-        )
+          .get(`${baseUrl}/api/auth`, 
+                          )
           .then((response) => {
             const items = response.data; 
            console.log(items);
            setItems(items);
           })
    };
- 
+   useEffect(() => {
+    getdatauser();
+  }, []);
     return (
         <HeaderBar>
              <img src={logo} className="h-12 ml-6 w-12  rounded-lg  " alt="Xcelvations Logo" height="40" />

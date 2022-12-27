@@ -83,7 +83,7 @@ const baseUrl =  'http://localhost:4000';
     //   setIsSubmit(true);
     // }
     //createAccount();
-   // goBack();
+   goBack();
    uploaddata()
     
   };

@@ -17,12 +17,11 @@ const baseUrl =  'http://localhost:4000';
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
-  const [productImage, setFile] = useState();
+  const [productImage, setFile, setImage] = useState();
   function handleChange(e) {
       setFile(e.target.files[0]);
   }
-  
-  console.log(productImage)
+ 
   const handleInputChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
@@ -199,7 +198,7 @@ const baseUrl =  'http://localhost:4000';
             </div>
             <div className='login-right bg-white flex justify-center rounded-r-xl'  method="POST"  enctype="multipart/form-data">
             <div className="mt-20 ml-10">
-            <img className="w-40 h-40   rounded-full" src={productImage} />  
+            <img className="w-40 h-40   rounded-full" src={ productImage } />  
             <input type="file"  onChange={handleChange} />
           </div>
                 <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />

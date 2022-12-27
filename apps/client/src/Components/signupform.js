@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import '../index.css';
@@ -17,11 +17,17 @@ const baseUrl =  'http://localhost:4000';
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
-  const [productImage, setFile, setImage] = useState();
+  const [productImage, setFile] = useState();
+  const [imageurl , setImageurl]= useState("")
+   
   function handleChange(e) {
+
+   //imageurl=URL.createObjectURL(e.target.files[0])
+     setImageurl(URL.createObjectURL(e.target.files[0]));
       setFile(e.target.files[0]);
   }
- 
+
+
   const handleInputChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
@@ -198,7 +204,7 @@ const baseUrl =  'http://localhost:4000';
             </div>
             <div className='login-right bg-white flex justify-center rounded-r-xl'  method="POST"  enctype="multipart/form-data">
             <div className="mt-20 ml-10">
-            <img className="w-40 h-40   rounded-full" src={ productImage } />  
+            <img className="w-40 h-40   rounded-full" src={imageurl} />  
             <input type="file"  onChange={handleChange} />
           </div>
                 <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />

@@ -25,7 +25,18 @@ const HeaderBar = styled.header`
 
 
 function TopHeader(props) {
-
+    const getdata = () => {
+        axios
+          .get(`${baseUrl}/api/client`, 
+          config
+            ,
+        )
+          .then((response) => {
+            const items = response.data; 
+           console.log(items);
+           setItems(items);
+          })
+   };
  
     return (
         <HeaderBar>

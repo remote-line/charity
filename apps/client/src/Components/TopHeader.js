@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import logo from '../assets/logo.jpg'
 import user from '../assets/user.png' 
 import DropDown1 from './Dropdown';
-
+import activestatus from '../assets/activestatus.png'
 const baseUrl =  'http://localhost:4000';
 
 const HeaderBar = styled.header`
@@ -23,9 +23,22 @@ const HeaderBar = styled.header`
     z-index: 1;
 `;
 
-
 function TopHeader(props) {
-
+    const [items, setItems] = useState([]);
+    const getdatauser = () => {
+        axios
+          .get(`${baseUrl}/api/auth/63ab24aa8aaae005e7504bfa`, 
+                          )
+          .then((response) => {
+            Buffer.from(response.data, 'binary').toString('base64')
+            const items = response.data; 
+           console.log(items);
+           setItems(items);
+          })
+   };
+   useEffect(() => {
+    getdatauser();
+  }, []);
  
     return (
         <HeaderBar>
@@ -34,12 +47,13 @@ function TopHeader(props) {
                 <h2 className=" text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
                     Manage Your Beneficiary List
                 </h2>
-                <img  className='h-10 w-12 ml-80'  src={user}></img>
+                <button onClick={getdatauser}>check</button>
+                {items?.map((items) => (<img  className='h-10 w-12 ml-80'  src={items?.productImage}></img>))}
+              <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
                   
                 </div>
                  </HeaderBar>
-        
     )
 };
 

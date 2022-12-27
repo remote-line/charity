@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-let port = 4000;
-var mongoDB = 'mongodb://127.0.0.1/charity';
+const mongoose = require("mongoose");
+const productRoutes = require("./routes/Profile");
+
+var mongoDB = 'mongodb://127.0.0.1/profile';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var cors = require('cors');
 app.use(cors());
 //Get the default connection
 var db = mongoose.connection;
-
 //Bind connection to error event (to get notification of connection errors)
 //db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -36,14 +36,9 @@ app.use((req, res, next) => {
   next();
 });
 
-const userRoute = require('./routes/User')
-const authRoute = require('./routes/auth')
- const clientRoute = require('./routes/client')
- const profileRoute = require('./routes/Profile')
-app.use('/api/user', userRoute)
-app.use('/api/auth', authRoute)
-app.use('/api/client', clientRoute)
-app.use('/api/profile', profileRoute)
+// Routes which should handle requests
+app.use("/products", productRoutes);
+ 
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
@@ -59,6 +54,9 @@ app.use((error, req, res, next) => {
     }
   });
 });
+
+ const port=4000;
 app.listen(port, () => {
   console.log(`server is listening on Port: ${port}`);
-})
+});
+module.exports = app;

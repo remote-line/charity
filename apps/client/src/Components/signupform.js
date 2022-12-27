@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import '../index.css';
@@ -10,21 +10,44 @@ const baseUrl =  'http://localhost:4000';
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  
   const [user, setUserDetails] = useState({
-    username: "",
-    email: "",
-    password: "",
-    cpassword: "",
   });
+  const [username, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
+  const [productImage, setFile] = useState();
+  const [imageurl , setImageurl]= useState("")
+   
+  function handleChange(e) {
 
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setUserDetails({
-      ...user,
-      [name]: value,
-    });
-  };
+   //imageurl=URL.createObjectURL(e.target.files[0])
+     setImageurl(URL.createObjectURL(e.target.files[0]));
+      setFile(e.target.files[0]);
+  }
 
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { id, value } = e.target;
+    if (id === "username") {
+      e.preventDefault();
+      setFirstName(value);
+    }
+    if (id === "email") {
+      e.preventDefault();
+      setEmail(value);
+    }
+    if (id === "password") {
+      e.preventDefault();
+      setPassword(value);
+    }
+    if (id === "cpassword") {
+      e.preventDefault();
+      setCPassword(value);
+    }
+  }
   const validateForm = (values) => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -48,7 +71,8 @@ const baseUrl =  'http://localhost:4000';
       error.cpassword = "Confirm Password is required";
     } else if (values.cpassword !== values.password) {
       error.cpassword = "Confirm password and password should be same";
-    }
+     } 
+
     return error;
   };
   const signupHandler = (e) => {
@@ -58,29 +82,61 @@ const baseUrl =  'http://localhost:4000';
     // if (!formErrors) {
     //   setIsSubmit(true);
     // }
-    createAccount();
-    goBack();
+    //createAccount();
+   //goBack();
+   uploaddata()
     
   };
 
   const createAccount = () => {
     axios
-      .post(`${baseUrl}/api/user/register`, user
+      .post(`${baseUrl}/api/user/register`,{
+        username,
+        email,
+        password,
+        productImage
+      }
     )
       .then((response) => {
      
         toast.success("User Created");
         alert(response.data.message);
-        
-        
+                
       });
   };
+  const uploaddata= useCallback(async (e) => {
+    
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("productImage", productImage);
+      const url = `${baseUrl}/api/user/register`;
+      const options = {
+        url: url,
+        method: "POST",
+        headers: {
+          "content-type": "multipart/form-data"
+        },
+        data: formData,
+      };
+      try {
+        await axios(options);
+        setFile(null);
+        toast.success("File uploaded successfully.");
+        goBack();
+      } catch (error) {
+        
+        toast.error(error.response.data.message)
+      }
+
+    }  );
   const goBack = () => {
     navigate(-1);}
 
     return (
         <div className="h-screen bg-slate-800 grid grid-flow-row md:grid md:grid-flow-col p-8 overflow-hidden">
-            <div className='login-left flex flex-col justify-center px-36 bg-white rounded-l-xl'>
+            <div className='login-leftw-96 flex flex-col justify-center px-36 bg-white rounded-l-xl'>
                 <div className='login-header'>
                     <h1 className='text-2xl font-bold py-3'>Welcome to our application</h1>
                     <p className='font-bold'>Please Sign up to make an account</p>
@@ -89,26 +145,26 @@ const baseUrl =  'http://localhost:4000';
                     <div className='login-form '>
                         <div className='login-form-content'>
                             <div className='form-item'>
-                                <label className='' htmlFor="name"> Enter your full name</label>
+                                <label className='' htmlFor="name"> Enter  name</label>
                                 <input 
                                 className='h-14  w-full outline-none text-lg border-2 border-gray-900 rounded-lg'
                                  type="text"
                                  name="username" 
                                 id="username"
-                                onChange={changeHandler}
-                              value={user.fname}
+                                onChange={handleInputChange }
+                              value={username}
                                    />
-                                <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.username}</p>
+                                <p className='color-red' style={{ color: 'red', fontSize: '14px' } }>{formErrors.username}</p>
                             </div>
                             <div className='form-item'>
                                 <label className='' htmlFor="email"> Enter email</label>
                                 <input
-                                 className='h-14  w-full outline-none text-lg border-2 border-gray-900 rounded-lg'
+                                 className='h-14  w-full   outline-none text-lg border-2 border-gray-900 rounded-lg'
                                   name="email" 
                                  type="text" 
                                   id="email" 
-                                  value={user.email}
-                                  onChange={changeHandler}/>
+                                  value={email}
+                                  onChange={handleInputChange }/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.email}</p>
                             </div>
                             <div className='form-item'>
@@ -118,8 +174,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="password"
                                  name="password"
                                   id="password"
-                                  value={user.password}
-                                  onChange={changeHandler} />
+                                  value={password}
+                                  onChange={handleInputChange } />
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.password}</p>
                             </div>
                             <div className='form-item'>
@@ -128,8 +184,8 @@ const baseUrl =  'http://localhost:4000';
                                  type="password" 
                                  id="cpassword"
                                  name="cpassword" 
-                                  value={user.cpassword}
-                                  onChange={changeHandler}/>
+                                  value={cpassword}
+                                  onChange={handleInputChange }/>
                                   <p className='color-red' style={{ color: 'red', fontSize: '14px'} }>{formErrors.cpassword}</p>
                             </div>
                             <div className='py-4'>
@@ -140,14 +196,19 @@ const baseUrl =  'http://localhost:4000';
                                  >
                                     Sign Up
                                  </button>
+                                
                             </div>
                         </div>
 
                     </div>
                 </form>
             </div>
-            <div className='login-right bg-slate-400 flex justify-center rounded-r-xl'>
-                <img className='rounded-r-lg' src={require('../assets/donate.jpg')} alt="donate" />
+            <div className='login-right bg-white flex justify-center rounded-r-xl'  method="POST"  enctype="multipart/form-data">
+            <div className="mt-20 ml-10">
+            <img className="w-40 h-40   rounded-full" src={imageurl} />  
+            <input type="file"  onChange={handleChange} />
+          </div>
+                <img className='rounded-r-lg ' src={require('../assets/donate.jpg')} alt="donate" />
             </div>
         </div>
     );

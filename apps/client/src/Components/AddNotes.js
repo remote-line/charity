@@ -23,6 +23,7 @@ function AddNotes() {
  
       });
     
+       
       const changeHandler = (e) => {
         const { name, value } = e.target;
         setUserDetails({
@@ -88,10 +89,10 @@ useEffect(() => {
      
         <TopHeader/>
       <div className='pt-20'> <Header /></div> 
-                <div   className=" g-slate-700  gap-11 px-2 py-10 text-white">
+                <div   className=" g-slate-700   border-2 border-black gap-11 px-2 py-10 text-white">
    
-                 <h1  className="font-bold  font-serif text-center text-black text-2xl "> Comment Add</h1>
-                 <div className=" grid-flow-row gap-11 px-8 py-10 text-black"> 
+                 <h1  className="font-bold border-2 border-black  font-serif text-center text-black text-2xl "> Comment Add</h1>
+                 <div className=" grid-flow-row border-2 border-black gap-11 px-8 py-10 text-black"> 
                
                 <textarea
                  // className='h-36 px-64 outline-none  text-black border-2 ml-30 border-gray-900 rounded-lg'
@@ -100,11 +101,9 @@ useEffect(() => {
                                   name="name"
                                   value={client.name} 
                                   onChange={changeHandler}
-
-                                   
                                                           />
                
-                  <div className='flex text-xl  font-bold font-family:ui-serif  '>
+                  <div className='flex text-xl  border-2 border-black    font-bold font-family:ui-serif  '>
                      
               
                  <button

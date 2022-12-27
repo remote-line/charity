@@ -24,7 +24,7 @@ router.put('/:id',verifyTokenAndAuthorization, async(req, res) => {
         res.status(500).json(err)
     }
 })
- router.get('/',verifyTokenAndAuthorization,async(req, res) => {
+ router.get('/', async(req, res) => {
     //const query = req.query.new
     try {
         const users = await User.find()
@@ -34,7 +34,7 @@ router.put('/:id',verifyTokenAndAuthorization, async(req, res) => {
         res.status(500).json(err)
     }
 })
-router.get('/find/:id', verifyTokenAndAuthorization, async(req, res) => {
+router.get('/:id', async(req, res) => {
     try {
         const user = await User.findById(req.params.id)
         const { password, ...others } = user._doc

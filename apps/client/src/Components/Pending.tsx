@@ -39,7 +39,7 @@ const config = {
      
       <TopHeader/>
     <div className='pt-20' > <Header /></div> 
-            <div className=" flex  h-screen item-center "  style={{backgroundImage:`url(${backgrd})`}} >
+            <div className=" flex  h-screen item-center"  style={{backgroundImage:`url(${backgrd})`}} >
  
                 <div   className="  gap-10 px-2 py-10" >
                  <h1  className="font-bold  font-serif text-center text-black  text-2xl "> Client Detail</h1>

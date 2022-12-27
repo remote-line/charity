@@ -24,24 +24,22 @@ const HeaderBar = styled.header`
 `;
 
 function TopHeader(props) {
-    const [image, setImage] = useState("");
     const [items, setItems] = useState([]);
     const getdatauser = () => {
         axios
           .get(`${baseUrl}/api/auth/63ab24aa8aaae005e7504bfa`, 
                           )
           .then((response) => {
-            let result = (res && res.data && res.data[0].file) || [];
-            setImage(result[0]);
-             console.log(result)
+            Buffer.from(response.data, 'binary').toString('base64')
             const items = response.data; 
-           //console.log(items);
+           console.log(items);
            setItems(items);
           })
    };
    useEffect(() => {
     getdatauser();
   }, []);
+ 
     return (
         <HeaderBar>
              <img src={logo} className="h-12 ml-6 w-12  rounded-lg  " alt="Xcelvations Logo" height="40" />
@@ -50,7 +48,7 @@ function TopHeader(props) {
                     Manage Your Beneficiary List
                 </h2>
                 <button onClick={getdatauser}>check</button>
-             
+                {items?.map((items) => (<img  className='h-10 w-12 ml-80'  src={items?.productImage}></img>))}
               <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
                   

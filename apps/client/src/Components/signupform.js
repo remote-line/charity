@@ -77,13 +77,13 @@ const baseUrl =  'http://localhost:4000';
   };
   const signupHandler = (e) => {
     e.preventDefault();
-   // setForm9Errors(validateForm(user));
+    setFormErrors(validateForm(user));
     setIsSubmit(true);
     // if (!formErrors) {
     //   setIsSubmit(true);
     // }
     //createAccount();
-   goBack();
+   //goBack();
    uploaddata()
     
   };
@@ -124,6 +124,7 @@ const baseUrl =  'http://localhost:4000';
         await axios(options);
         setFile(null);
         toast.success("File uploaded successfully.");
+        goBack();
       } catch (error) {
         
         toast.error(error.response.data.message)

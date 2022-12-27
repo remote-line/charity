@@ -22,15 +22,20 @@ const HeaderBar = styled.header`
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25);
     z-index: 1;
 `;
+
 function TopHeader(props) {
-    const [items, setItems] = useState<any>([]);
+    const [image, setImage] = useState("");
+    const [items, setItems] = useState([]);
     const getdatauser = () => {
         axios
-          .get(`${baseUrl}/api/auth`, 
+          .get(`${baseUrl}/api/auth/63ab24aa8aaae005e7504bfa`, 
                           )
           .then((response) => {
+            let result = (res && res.data && res.data[0].file) || [];
+            setImage(result[0]);
+             console.log(result)
             const items = response.data; 
-           console.log(items);
+           //console.log(items);
            setItems(items);
           })
    };
@@ -44,7 +49,8 @@ function TopHeader(props) {
                 <h2 className=" text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
                     Manage Your Beneficiary List
                 </h2>
-                <img  className='h-10 w-12 ml-80'  src={user}></img>
+                <button onClick={getdatauser}>check</button>
+             
               <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
                   

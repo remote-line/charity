@@ -49,6 +49,7 @@ function TopHeader(props) {
                 </h2>
                 <button onClick={getdatauser}>check</button>
                 {items?.map((items) => (<img  className='h-10 w-12 ml-80'  src={items?.productImage}></img>))}
+                <img src={`data:image/jpeg;charset=utf-8;base64,${base64}`} />
               <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
                     

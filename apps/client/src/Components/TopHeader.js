@@ -22,7 +22,7 @@ const HeaderBar = styled.header`
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25);
     z-index: 1;
 `;
-
+const [base64, setBase64] = useState();
 function TopHeader(props) {
     const [items, setItems] = useState([]);
     const getdatauser = () => {
@@ -51,7 +51,7 @@ function TopHeader(props) {
                 {items?.map((items) => (<img  className='h-10 w-12 ml-80'  src={items?.productImage}></img>))}
               <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
-                  
+                    
                 </div>
                  </HeaderBar>
     )

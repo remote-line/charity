@@ -40,7 +40,6 @@ function TopHeader(props) {
    useEffect(() => {
     getdatauser();
   }, []);
-  console.log(items.name)
     return (
         <HeaderBar>
              <img src={logo} className="h-12 ml-6 w-12  rounded-lg  " alt="Xcelvations Logo" height="40" />

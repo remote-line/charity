@@ -22,15 +22,16 @@ const HeaderBar = styled.header`
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25);
     z-index: 1;
 `;
-const [base64, setBase64] = useState();
+
 function TopHeader(props) {
+   
+        const [base64, setBase64] = useState();
     const [items, setItems] = useState([]);
     const getdatauser = () => {
         axios
           .get(`${baseUrl}/api/auth/63ab24aa8aaae005e7504bfa`, 
                           )
           .then((response) => {
-            Buffer.from(response.data, 'binary').toString('base64')
             const items = response.data; 
            console.log(items);
            setItems(items);
@@ -39,7 +40,7 @@ function TopHeader(props) {
    useEffect(() => {
     getdatauser();
   }, []);
- 
+  console.log(items.name)
     return (
         <HeaderBar>
              <img src={logo} className="h-12 ml-6 w-12  rounded-lg  " alt="Xcelvations Logo" height="40" />
@@ -47,9 +48,9 @@ function TopHeader(props) {
                 <h2 className=" text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
                     Manage Your Beneficiary List
                 </h2>
-                <button onClick={getdatauser}>check</button>
-                {items?.map((items) => (<img  className='h-10 w-12 ml-80'  src={items?.productImage}></img>))}
-                <img src={`data:image/jpeg;charset=utf-8;base64,${base64}`} />
+                {items?.map((items) => ( <p key={items._id}> {items?.name}</p>))}
+                 
+                <img  className='h-10 w-12 ml-80'  src={items.name}></img>
               <img  className='h-3 w-3'  src={activestatus}></img>
                 <DropDown1/>
                     

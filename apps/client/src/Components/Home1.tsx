@@ -5,7 +5,6 @@ import axios from "axios";
 import Header from './Header'
 import TopHeader from './TopHeader';
 import backgrd from '../assets/backgrd.jpg'
-
 const baseUrl =  'http://localhost:4000';
 function Home() {
     const [items, setItems] = useState<any>([]);
@@ -36,7 +35,7 @@ const config = {
    useEffect(() => {
     getdata();
   }, []);
-   
+   console.log(items.name)
   const handleRow=( id: any)=>{
    // console.log(id);
   // localStorage.setItem("sheetId", id);

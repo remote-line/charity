@@ -40,6 +40,7 @@ function TopHeader(props) {
    useEffect(() => {
     getdatauser();
   }, []);
+
     return (
         <HeaderBar>
              <img src={logo} className="h-12 ml-6 w-12  rounded-lg  " alt="Xcelvations Logo" height="40" />
@@ -47,7 +48,7 @@ function TopHeader(props) {
                 <h2 className=" text-Black font-bold  font-serif pl-96 ml-24 flex  text-2xl">
                     Manage Your Beneficiary List
                 </h2>
-                {items?.map((items) => ( <p key={items._id}> {items?.name}</p>))}
+                <p> {items?.username}</p>
                  
                 <img  className='h-10 w-12 ml-80'  src={items.name}></img>
               <img  className='h-3 w-3'  src={activestatus}></img>

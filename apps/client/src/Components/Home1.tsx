@@ -27,7 +27,7 @@ const config = {
             ,
         )
           .then((response) => {
-            const items = response.data; 
+          const items = response.data; 
            console.log(items);
            setItems(items);
           })
@@ -35,7 +35,7 @@ const config = {
    useEffect(() => {
     getdata();
   }, []);
-   console.log(items.name)
+    
   const handleRow=( id: any)=>{
    // console.log(id);
   // localStorage.setItem("sheetId", id);

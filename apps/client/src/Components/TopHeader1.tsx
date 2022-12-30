@@ -13,13 +13,17 @@ const [items, setItems] = useState<any>([]);
         axios
           .get(`${baseUrl}/api/auth/63a9bb7358139a0f1c005048`, {
             responseType: "arraybuffer"
-          
+          }      
         )
           .then((response) => {
           const items = response.data; 
-           setItems(items);
-           console.log(items)
-          var imageUrl = URL.createObjectURL(items.productImage);
+          const base64 = btoa(
+            new Uint8Array(response.data).reduce(
+              (data, byte) => data + String.fromCharCode(byte),
+              '' )
+       //   setItems(items);
+          )
+          setItems(base64)
           })
    };
    useEffect(() => {

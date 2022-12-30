@@ -18,7 +18,7 @@ const [image, setImage] = useState("");
           .then((response) => {
           const items = response.data; 
                
-       //   setItems(items);
+         setItems(items);
         
        
           })

@@ -11,16 +11,14 @@ const [items, setItems] = useState<any>([]);
 const [image, setImage] = useState("");
    const getdata = () => {
         axios
-          .get(`${baseUrl}/api/auth/63a9bb7358139a0f1c005048`, {
-            responseType: "arraybuffer"
-          },      
+          .get(`${baseUrl}/api/auth/63a9bb7358139a0f1c005048`,     
         )
           .then((response) => {
           const items = response.data; 
                
          setItems(items);
         
-       
+        console.log(items.prductImage)
           })
    };
    useEffect(() => {

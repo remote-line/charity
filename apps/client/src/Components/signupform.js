@@ -17,7 +17,7 @@ const baseUrl =  'http://localhost:4000';
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
-  const [productImage, setFile] = useState();
+  const [Image, setFile] = useState();
   const [imageurl , setImageurl]= useState("")
    
   function handleChange(e) {
@@ -110,7 +110,7 @@ const baseUrl =  'http://localhost:4000';
       formData.append("username", username);
       formData.append("email", email);
       formData.append("password", password);
-      formData.append("productImage", productImage);
+      formData.append("Image", Image);
       const url = `${baseUrl}/api/user/register`;
       const options = {
         url: url,

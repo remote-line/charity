@@ -2,38 +2,27 @@ const router = require('express').Router()
 const Product = require('../models/user')
 const multer = require('multer');
 const mongoose = require("mongoose");
+const fs = require("fs");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {authSchema}=require('../validation/usevalidation')
  
+
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads');
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
   },
-  filename: function(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-')+ file.originalname);
-  }
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
 });
 
-const fileFilter = (req, file, cb) => {
-  // reject a file
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
+const upload = multer({ storage: storage });
 
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFilter: fileFilter
-});
+ 
 
 
-router.post("/register", upload.single('productImage'), async(req, res, next) => {
+router.post("/register", upload.single('Image'), async(req, res, next) => {
  
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(req.body.password, salt)
@@ -43,7 +32,10 @@ router.post("/register", upload.single('productImage'), async(req, res, next) =>
     email: req.body.email,
     password: hashedPassword,
     isAdmin: req.body.isAdmin,
-    productImage: req.file?.path 
+    image:{
+      data: fs.readFileSync("uploads/" + req.file.filename),
+      contentType: "image/png",
+    },
   });
   product
     .save()
@@ -55,10 +47,7 @@ router.post("/register", upload.single('productImage'), async(req, res, next) =>
             name: result.name,
             price: result.price,
             _id: result._id,
-            request: {
-                type: 'GET',
-                url: "http://localhost:4000/products/" + result._id
-            }
+           
         }
       });
     })

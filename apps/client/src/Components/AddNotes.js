@@ -8,7 +8,8 @@ function App() {
   useEffect(() => {
     axios
       .get("http://localhost:5000")
-      .then((res) => setData(res.data))
+      .then((res) =>{ setData(res.data)
+        console.log("its working") })
       .catch((err) => console.log(err, "it has an error"));
   });
   return (

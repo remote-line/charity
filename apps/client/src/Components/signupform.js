@@ -94,7 +94,7 @@ const baseUrl =  'http://localhost:4000';
         username,
         email,
         password,
-        productImage
+        Image
       }
     )
       .then((response) => {

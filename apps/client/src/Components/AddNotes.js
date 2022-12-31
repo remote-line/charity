@@ -5,13 +5,18 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [data, setData] = useState([]);
-  useEffect(() => {
+  const getdata =()=> {
     axios
       .get("http://localhost:5000")
-      .then((res) =>{ setData(res.data)
-        console.log("its working") })
+      .then((res) =>{ 
+        const items= res.data
+        setData(items)
+        console.log(items) })
       .catch((err) => console.log(err, "it has an error"));
-  });
+  };
+  useEffect(() => {
+    getdata();
+  }, []);
   return (
     <div className="App">
       <h1>Image uploading react</h1>
@@ -20,7 +25,9 @@ function App() {
           String.fromCharCode(...new Uint8Array(singleData.img.data.data))
         );
         return <img src={`data:image/png;base64,${base64String}`} width="300"/>
-      })}
+        
+      },
+           )}
     </div>
   );
 }

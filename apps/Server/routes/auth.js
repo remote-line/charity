@@ -43,6 +43,7 @@ router.get('/:id', async(req, res) => {
         res.status(500).json(err)
     }
 })
+ 
 router.get('/stats',verifyTokenAndAuthorization, async(req, res) => {
     const date = new Date()
     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))

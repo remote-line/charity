@@ -8,11 +8,11 @@ function App() {
   const [items, setItems]=useState([])
   const getdata =()=> {
     axios
-      .get("http://localhost:4000/api/auth/63b0730ad37228c15f42a2c8")
+      .get("http://localhost:4000/api/auth")
       .then((res) =>{ 
         const items= res.data
         setData(items)
-        setItems(items)
+       
         console.log(items) })
       .catch((err) => console.log(err, "it has an error"));
   };
@@ -24,7 +24,7 @@ function App() {
       <h1>Image uploading react</h1>
       {data.map((singleData) => {
         const base64String = btoa(
-          String.fromCharCode(...new Uint8Array(singleData.img.data.data))
+          String.fromCharCode(...new Uint8Array(singleData.image.data.data))
         );
         return <img src={`data:image/png;base64,${base64String}`} width="300"/>
       })}

@@ -9,9 +9,10 @@ const baseUrl =  'http://localhost:4000';
 function Home() {
 const [items, setItems] = useState<any>([]);      
 const [img, setImg] = useState();
+
    const getdata = () => {
         axios
-          .get(`${baseUrl}/api/auth/63a9bb7358139a0f1c005048`,     
+          .get(`${baseUrl}/api/auth/63b05fee2971aaaa99c2c9fa`,     
         )
           .then((response) => {
          const items= response.data
@@ -40,6 +41,7 @@ const [img, setImg] = useState();
                 <tr className="px-1 border border-white" >
                     <td className="px-1 border border-white" >{items?.username}</td>
                     <td  className="px-1 border border-white">{items?.email}</td>
+                    <td>{items?.productImage}</td>
                     <td><img src={`data:;base64,${img}`} /></td>
                 </tr>
                </tbody>

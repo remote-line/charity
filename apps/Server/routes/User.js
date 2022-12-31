@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {authSchema}=require('../validation/usevalidation')
-const upload1=multer({dest:'uploads/'});
+ 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './uploads');

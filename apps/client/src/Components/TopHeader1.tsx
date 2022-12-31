@@ -6,10 +6,11 @@ import Header from './Header'
 import TopHeader from './TopHeader';
 import backgrd from '../assets/backgrd.jpg'
 const baseUrl =  'http://localhost:4000';
+
 function Home() {
 const [items, setItems] = useState<any>([]);      
 const [img, setImg] = useState();
-
+ 
    const getdata = () => {
         axios
           .get(`${baseUrl}/api/auth/63b05fee2971aaaa99c2c9fa`,     

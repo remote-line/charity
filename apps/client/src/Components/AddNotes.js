@@ -1,34 +1,27 @@
-import React from "react";
 
-export default class FetchRandomUser extends React.Component {
-  state = {
-    loading: true,
-    person: null
-  };
+ 
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-  async componentDidMount() {
-    const url = "http://localhost:4000/api/auth/63b05fee2971aaaa99c2c9fa`";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ person: data.results[0], loading: false });
-  }
-
-  render() {
-    if (this.state.loading) {
-      return <div>loading...</div>;
-    }
-
-    if (!this.state.person) {
-      return <div>didn't get a person</div>;
-    }
-
-    return (
-      <div>
-        <div>{this.state.person.name.title}</div>
-        <div>{this.state.person.name.first}</div>
-        <div>{this.state.person.name.last}</div>
-        <img src={this.state.person.picture.large} />
-      </div>
-    );
-  }
+function App() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000")
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err, "it has an error"));
+  });
+  return (
+    <div className="App">
+      <h1>Image uploading react</h1>
+      {data.map((singleData) => {
+        const base64String = btoa(
+          String.fromCharCode(...new Uint8Array(singleData.img.data.data))
+        );
+        return <img src={`data:image/png;base64,${base64String}`} width="300"/>
+      })}
+    </div>
+  );
 }
+
+export default App

@@ -8,17 +8,16 @@ import backgrd from '../assets/backgrd.jpg'
 const baseUrl =  'http://localhost:4000';
 function Home() {
 const [items, setItems] = useState<any>([]);      
-const [image, setImage] = useState("");
+const [img, setImg] = useState();
    const getdata = () => {
         axios
           .get(`${baseUrl}/api/auth/63a9bb7358139a0f1c005048`,     
         )
           .then((response) => {
-          const items = response.data; 
-               
-         setItems(items);
+         const items= response.data
+        setItems(items);
         
-        console.log(items.prductImage)
+        console.log(items)
           })
    };
    useEffect(() => {
@@ -41,7 +40,7 @@ const [image, setImage] = useState("");
                 <tr className="px-1 border border-white" >
                     <td className="px-1 border border-white" >{items?.username}</td>
                     <td  className="px-1 border border-white">{items?.email}</td>
-                    <td><img src={`data:;base64,${image}`} /></td>
+                    <td><img src={`data:;base64,${img}`} /></td>
                 </tr>
                </tbody>
                

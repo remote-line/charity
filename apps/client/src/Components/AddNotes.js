@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState([]);
   const getdata =()=> {
     axios
-      .get("http://localhost:5000")
+      .get("http://localhost:4000/api/auth/63b0730ad37228c15f42a2c8")
       .then((res) =>{ 
         const items= res.data
         setData(items)
